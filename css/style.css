@@ -3786,8 +3786,33 @@ p.form-message.error {
 
 
 
+.eventt h3 {
+    font-weight: bold;
+    margin: 1em 0; /* Adds spacing above and below the element */
+    display: block;
+}
 
+.eventt h4 {
+    font-weight: bold;
+    margin: 1em 0; /* Adds spacing above and below the element */
+    display: block;
+}
 
+.eventt h5 {
+    font-weight: bold;
+    margin: 1em 0; /* Adds spacing above and below the element */
+    display: block;
+}
 
+.eventt p {
+    padding: 0;
+    font-weight: normal; /* Regular weight text */
+    margin: 1em 0; /* Adds spacing above and below the paragraph */
+    line-height: normal; /* Usually about 1.2–1.5 times the font size */
+    color: inherit; /* Inherits the color from its parent */
+    display: block; /* By default, paragraphs are block-level elements */
+}
 
-
+.eventt ul {
+    list-style-type: disc;
+}

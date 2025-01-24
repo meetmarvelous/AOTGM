@@ -5,7 +5,7 @@ session_start();
 $dbhost 	= "localhost";
 $dbuser 	= "root";
 $dbpass 	= "";
-$dbname 	= "test_thelight";
+$dbname 	= "test_ark";
 $charset 	= "utf8";
 
 $dbcon = mysqli_connect($dbhost, $dbuser, $dbpass);
