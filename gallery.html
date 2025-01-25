@@ -46,6 +46,70 @@
   <link rel="stylesheet" href="css/responsive.css">
 
 
+  <!-- LightGallery CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
+  <!-- Custom Styling -->
+  <style>
+    .gallery-page {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    #gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+
+    #gallery-container a {
+      display: block;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #gallery-container a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #gallery-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    #gallery-container a:hover img {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 600px) {
+      #gallery-container {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+      }
+    }
+
+    .gallery-area {
+      background-color: #fff;
+      padding: 10px;
+    }
+
+    /* @media (prefers-color-scheme: dark) {
+      div.gallery-page {
+        background-color: #121212;
+        color: #ffffff;
+      }
+
+      #gallery-container a {
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+      }
+    } */
+  </style>
 </head>
 
 <body>
@@ -227,17 +291,17 @@
 
   <!--====== PAGE BANNER PART START ======-->
 
-  <section id="page-banner" class="pt-105 pb-130 bg_cover" data-overlay="8"
-    style="background-image: url(images/page-banner-6.jpg)">
+  <section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8"
+    style="background-image: url(images/page-banner-3.jpg)">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="page-banner-cont">
-            <h2>Contact</h2>
+            <h2>Our Gallery</h2>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                <li class="breadcrumb-item active" aria-current="page">Gallery</li>
               </ol>
             </nav>
           </div> <!-- page banner cont -->
@@ -248,112 +312,217 @@
 
   <!--====== PAGE BANNER PART ENDS ======-->
 
-  <!--====== CONTACT PART START ======-->
+  <!--====== EVENTS PART START ======-->
 
-  <section id="contact-page" class="pt-90 pb-120 gray-bg">
+  <section id="event-page" class="pt-90 pb-120 gray-bg">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-7">
-          <div class="contact-from mt-30">
-            <div class="section-title">
-              <h5>Contact Us</h5>
-              <h2>Keep in touch</h2>
-            </div> <!-- section title -->
-            <div class="main-form pt-45">
-              <form id="contact-form" action="#" method="post" data-toggle="validator">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="singel-form form-group">
-                      <input name="name" type="text" placeholder="Your name" data-error="Name is required."
-                        required="required">
-                      <div class="help-block with-errors"></div>
-                    </div> <!-- singel form -->
-                  </div>
-                  <div class="col-md-6">
-                    <div class="singel-form form-group">
-                      <input name="email" type="email" placeholder="Email" data-error="Valid email is required."
-                        required="required">
-                      <div class="help-block with-errors"></div>
-                    </div> <!-- singel form -->
-                  </div>
-                  <div class="col-md-6">
-                    <div class="singel-form form-group">
-                      <input name="subject" type="text" placeholder="Subject" data-error="Subject is required."
-                        required="required">
-                      <div class="help-block with-errors"></div>
-                    </div> <!-- singel form -->
-                  </div>
-                  <div class="col-md-6">
-                    <div class="singel-form form-group">
-                      <input name="phone" type="text" placeholder="Phone" data-error="Phone is required."
-                        required="required">
-                      <div class="help-block with-errors"></div>
-                    </div> <!-- singel form -->
-                  </div>
-                  <div class="col-md-12">
-                    <div class="singel-form form-group">
-                      <textarea name="messege" placeholder="Messege" data-error="Please,leave us a message."
-                        required="required"></textarea>
-                      <div class="help-block with-errors"></div>
-                    </div> <!-- singel form -->
-                  </div>
-                  <p class="form-message"></p>
-                  <div class="col-md-12">
-                    <div class="singel-form">
-                      <button type="submit" class="main-btn">Send</button>
-                    </div> <!-- singel form -->
-                  </div>
-                </div> <!-- row -->
-              </form>
-            </div> <!-- main form -->
-          </div> <!--  contact from -->
+
+      <div class="gallery-area mb-3">
+        <div class="row">
+          <div class="col-lg-12">
+            <h4 class="text-center">Gallery 1 znxbehi jilbnxitg bxgtnbxecn zrfwxi nitvntg vzwxv nivntv</h>
+              <div class="gallery-page">
+                <div id="gallery-container">
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
+                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
+                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/bg-2.jpg">
+                    <img src="images/bg-2.jpg" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
+                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
+                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/bg-2.jpg">
+                    <img src="images/bg-2.jpg" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/img2.jpg">
+                    <img src="images/img2.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/favicon.png">
+                    <img src="images/favicon.png" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/page-banner-5.jpg">
+                    <img src="images/page-banner-5.jpg" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
+                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/img4.jpg">
+                    <img src="images/img4.jpg" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/logo old.png">
+                    <img src="images/logo old.png" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                </div>
+              </div>
+          </div>
         </div>
-        <div class="col-lg-5">
-          <div class="contact-address mt-30">
-            <ul>
-              <li>
-                <div class="singel-address">
-                  <div class="icon">
-                    <i class="fa fa-home"></i>
-                  </div>
-                  <div class="cont">
-                    <p>143 castle road 517 district, kiyev port south Canada</p>
-                  </div>
-                </div> <!-- singel address -->
+      </div>
+
+      <div class="gallery-area mb-3">
+        <div class="row">
+          <div class="col-lg-12">
+            <h4 class="text-center">Gallery 1 znxbehi jilbnxitg bxgtnbxecn zrfwxi nitvntg vzwxv nivntv</h>
+              <div class="gallery-page">
+                <div id="gallery-container">
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
+                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
+                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/bg-2.jpg">
+                    <img src="images/bg-2.jpg" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
+                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
+                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/bg-2.jpg">
+                    <img src="images/bg-2.jpg" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/img2.jpg">
+                    <img src="images/img2.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/favicon.png">
+                    <img src="images/favicon.png" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/page-banner-5.jpg">
+                    <img src="images/page-banner-5.jpg" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
+                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/img4.jpg">
+                    <img src="images/img4.jpg" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/logo old.png">
+                    <img src="images/logo old.png" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-area mb-3">
+        <div class="row">
+          <div class="col-lg-12">
+            <h4 class="text-center">Gallery 1 znxbehi jilbnxitg bxgtnbxecn zrfwxi nitvntg vzwxv nivntv</h>
+              <div class="gallery-page">
+                <div id="gallery-container">
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
+                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
+                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/bg-2.jpg">
+                    <img src="images/bg-2.jpg" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
+                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
+                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/bg-2.jpg">
+                    <img src="images/bg-2.jpg" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/img2.jpg">
+                    <img src="images/img2.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/favicon.png">
+                    <img src="images/favicon.png" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/page-banner-5.jpg">
+                    <img src="images/page-banner-5.jpg" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
+                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/img4.jpg">
+                    <img src="images/img4.jpg" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/logo old.png">
+                    <img src="images/logo old.png" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <nav class="courses-pagination mt-50">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a href="#" aria-label="Previous">
+                  <i class="fa fa-angle-left"></i>
+                </a>
               </li>
-              <li>
-                <div class="singel-address">
-                  <div class="icon">
-                    <i class="fa fa-phone"></i>
-                  </div>
-                  <div class="cont">
-                    <p>+3 123 456 789</p>
-                    <p>+1 222 345 342</p>
-                  </div>
-                </div> <!-- singel address -->
-              </li>
-              <li>
-                <div class="singel-address">
-                  <div class="icon">
-                    <i class="fa fa-envelope-o"></i>
-                  </div>
-                  <div class="cont">
-                    <p>info@yourmail.com</p>
-                    <p>info@yourmail.com</p>
-                  </div>
-                </div> <!-- singel address -->
+              <li class="page-item"><a class="active" href="#">1</a></li>
+              <li class="page-item"><a href="#">2</a></li>
+              <li class="page-item"><a href="#">3</a></li>
+              <li class="page-item">
+                <a href="#" aria-label="Next">
+                  <i class="fa fa-angle-right"></i>
+                </a>
               </li>
             </ul>
-          </div>
-          <div class="map mt-30">
-            <div id="contact-map"></div>
-          </div>
+          </nav> <!-- courses pagination -->
         </div>
       </div> <!-- row -->
+
     </div> <!-- container -->
+
   </section>
 
-  <!--====== CONTACT PART ENDS ======-->
+  <!--====== EVENTS PART ENDS ======-->
 
   <!--====== FOOTER PART START ======-->
 
@@ -468,17 +637,30 @@
 
   <!--====== FOOTER PART ENDS ======-->
 
-  <!--====== BACK TO TOP PART START ======-->
+  <!--====== BACK TO TP PART START ======-->
 
   <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 
-  <!--====== BACK TO TOP PART ENDS ======-->
+  <!--====== BACK TO TP PART ENDS ======-->
 
 
+  <!-- LightGallery JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
 
-
-
-
+  <script>
+    const container = document.querySelector('#gallery-container');
+    lightGallery(container, {
+      selector: '.lg-item',
+      plugins: [lgZoom, lgThumbnail],
+      mobileSettings: {
+        showCloseIcon: true,
+        zoom: true,
+        thumbnail: true
+      }
+    });
+  </script>
 
   <!--====== jquery js ======-->
   <script src="js/vendor/modernizr-3.6.0.min.js"></script>
