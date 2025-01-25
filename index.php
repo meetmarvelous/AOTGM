@@ -1,3 +1,13 @@
+<?php
+require_once 'include/connect.php';
+
+$query = mysqli_query($dbcon, "SELECT * FROM site_info");
+$site = mysqli_fetch_array($query);
+if (!$site) {
+	die("error in selecting data from blog database");
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -10,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!--====== Title ======-->
-  <title>AOTGM</title>
+  <title> <?php echo $site['webname']; ?> </title>
 
   <!--====== Favicon Icon ======-->
   <link rel="shortcut icon" href="images/favicon.png" type="image/png">
@@ -80,7 +90,7 @@
               <ul>
                 <li><img src="images/all-icon/map.png" alt="icon"><span>Shelter Afrique, Uyo, Akwa Ibom State</span>
                 </li>
-                <li><img src="images/all-icon/email.png" alt="icon"><span>info@arkoftrinity.org</span></li>
+                <li><img src="images/all-icon/email.png" alt="icon"><span><?php echo $site['email']; ?></span></li>
               </ul>
             </div>
           </div>
@@ -98,7 +108,7 @@
         <div class="row">
           <div class="col-lg-4 col-md-4">
             <div class="logo">
-              <a href="index.html">
+              <a href="index.php">
                 <img src="images/logo.png" alt="Logo">
               </a>
             </div>
@@ -111,7 +121,7 @@
                 </div>
                 <div class="cont">
                   <p>Help Line</p>
-                  <span>+234 901 923 3509</span>
+                  <span><?php echo $site['phone']; ?></span>
                 </div>
               </div>
               <div class="button float-left">
@@ -138,19 +148,19 @@
               <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
-                    <a class="active" href="index.html">Home</a>
+                    <a class="active" href="index.php">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a href="about.html">About us</a>
+                    <a href="about.php">About us</a>
                   </li>
                   <li class="nav-item">
-                    <a href="school.html">Our School</a>
+                    <a href="school.php">Our School</a>
                   </li>
                   <li class="nav-item">
-                    <a href="gallery.html">Our Gallery</a>
+                    <a href="gallery.php">Our Gallery</a>
                   </li>
                   <li class="nav-item">
-                    <a href="contact.html">Contact</a>
+                    <a href="contact.php">Contact</a>
                   </li>
                 </ul>
               </div>
@@ -198,8 +208,7 @@
           <div class="col-xl-7 col-lg-9">
             <div class="slider-cont">
               <h1 data-animation="bounceInLeft" data-delay="1s">Choose the right place for worship</h1>
-              <p data-animation="fadeInUp" data-delay="1.3s">Donec vitae sapien ut libearo venenatis faucibus. Nullam
-                quis ante. Etiam sit amet orci eget eros faucibus tincidunt Sed fringilla mauri amet nibh.</p>
+              <p data-animation="fadeInUp" data-delay="1.3s">To Evangelize, Teach and Preach the Christian Religion of the Love of God through the Gospel of Jesus Christ.</p>
               <ul>
                 <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="#">Read More</a></li>
                 <li><a data-animation="fadeInUp" data-delay="1.9s" class="main-btn main-btn-2" href="#">Get Started</a>
@@ -217,8 +226,7 @@
           <div class="col-xl-7 col-lg-9">
             <div class="slider-cont">
               <h1 data-animation="bounceInLeft" data-delay="1s">Choose the right place for worship</h1>
-              <p data-animation="fadeInUp" data-delay="1.3s">Donec vitae sapien ut libearo venenatis faucibus. Nullam
-                quis ante. Etiam sit amet orci eget eros faucibus tincidunt Sed fringilla mauri amet nibh.</p>
+              <p data-animation="fadeInUp" data-delay="1.3s">To Empower and Expand People Capacity and Ability to grow through the Christian faith.To promote Alms and Giving Ministry to all people.</p>
               <ul>
                 <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="#">Read More</a></li>
                 <li><a data-animation="fadeInUp" data-delay="1.9s" class="main-btn main-btn-2" href="#">Get Started</a>
@@ -236,8 +244,7 @@
           <div class="col-xl-7 col-lg-9">
             <div class="slider-cont">
               <h1 data-animation="bounceInLeft" data-delay="1s">Choose the right place for worship</h1>
-              <p data-animation="fadeInUp" data-delay="1.3s">Donec vitae sapien ut libearo venenatis faucibus. Nullam
-                quis ante. Etiam sit amet orci eget eros faucibus tincidunt Sed fringilla mauri amet nibh.</p>
+              <p data-animation="fadeInUp" data-delay="1.3s">To Evangelize, Teach and Preach the Christian Religion of the Love of God through the Gospel of Jesus Christ. </p>
               <ul>
                 <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="#">Read More</a></li>
                 <li><a data-animation="fadeInUp" data-delay="1.9s" class="main-btn main-btn-2" href="#">Get Started</a>
@@ -251,101 +258,6 @@
   </section>
 
   <!--====== SLIDER PART ENDS ======-->
-
-  <!--====== CATEGORY PART START ======-->
-
-  <!-- <section id="category-part">
-    <div class="container">
-      <div class="category pt-40 pb-80">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="category-text pt-40">
-              <h2>Best platform to learn everything</h2>
-            </div>
-          </div>
-          <div class="col-lg-6 offset-lg-1 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-8 offset-2">
-            <div class="row category-slied mt-40">
-              <div class="col-lg-4">
-                <a href="#">
-                  <span class="singel-category text-center color-1">
-                    <span class="icon">
-                      <img src="images/all-icon/ctg-1.png" alt="Icon">
-                    </span>
-                    <span class="cont">
-                      <span>Language</span>
-                    </span>
-                  </span>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a href="#">
-                  <span class="singel-category text-center color-2">
-                    <span class="icon">
-                      <img src="images/all-icon/ctg-2.png" alt="Icon">
-                    </span>
-                    <span class="cont">
-                      <span>Business</span>
-                    </span>
-                  </span>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a href="#">
-                  <span class="singel-category text-center color-3">
-                    <span class="icon">
-                      <img src="images/all-icon/ctg-3.png" alt="Icon">
-                    </span>
-                    <span class="cont">
-                      <span>Literature</span>
-                    </span>
-                  </span>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a href="#">
-                  <span class="singel-category text-center color-1">
-                    <span class="icon">
-                      <img src="images/all-icon/ctg-1.png" alt="Icon">
-                    </span>
-                    <span class="cont">
-                      <span>Language</span>
-                    </span>
-                  </span>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a href="#">
-                  <span class="singel-category text-center color-2">
-                    <span class="icon">
-                      <img src="images/all-icon/ctg-2.png" alt="Icon">
-                    </span>
-                    <span class="cont">
-                      <span>Business</span>
-                    </span>
-                  </span>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a href="#">
-                  <span class="singel-category text-center color-3">
-                    <span class="icon">
-                      <img src="images/all-icon/ctg-3.png" alt="Icon">
-                    </span>
-                    <span class="cont">
-                      <span>Literature</span>
-                    </span>
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-   -->
-
-  <!--====== CATEGORY PART ENDS ======-->
 
   <!--====== ABOUT PART START ======-->
   <section id="about-page" class="pt-70 pb-110">
@@ -455,7 +367,7 @@
         </div>
         <div class="col-lg-3 col-sm-6">
           <div class="singel-counter text-center mt-40">
-           <span class="">Innovative</span>
+            <span class="">Innovative</span>
             <p>Learning Tools</p>
           </div> <!-- singel counter -->
         </div>
@@ -649,7 +561,7 @@
                         session.</li>
                     </ul>
               </div>
-<!-- 
+              <!-- 
               <h3>3. School Fees, Enrollment, and Withdrawal Policy</h3>
 
               <p>All new students are admitted on probation for the first six weeks.</p>
@@ -942,7 +854,7 @@
                     correction shall drive it far from him.”</li>
                 </ul>
               </ul> -->
-<!-- 
+              <!-- 
               <div>
                 <h3>Ark of Trinity G.M Altars and Groups</h3>
 
@@ -1080,566 +992,9 @@
 
   <!--====== carousel PART ENDS ======-->
 
-  <!--====== COURSE PART START ======-->
-
-  <!-- <section id="course-part" class="pt-115 pb-120 gray-bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="section-title pb-45">
-            <h5>Our course</h5>
-            <h2>Featured courses </h2>
-          </div>
-        </div>
-      </div>
-      <div class="row course-slied mt-30">
-        <div class="col-lg-4">
-          <div class="singel-course">
-            <div class="thum">
-              <div class="image">
-                <img src="images/course/cu-1.jpg" alt="Course">
-              </div>
-              <div class="price">
-                <span>Free</span>
-              </div>
-            </div>
-            <div class="cont">
-              <ul>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-              <span>(20 Reviws)</span>
-              <a href="courses-singel.html">
-                <h4>Learn basis javascirpt from start for beginner</h4>
-              </a>
-              <div class="course-teacher">
-                <div class="thum">
-                  <a href="#"><img src="images/course/teacher/t-1.jpg" alt="teacher"></a>
-                </div>
-                <div class="name">
-                  <a href="#">
-                    <h6>Mark anthem</h6>
-                  </a>
-                </div>
-                <div class="admin">
-                  <ul>
-                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="singel-course">
-            <div class="thum">
-              <div class="image">
-                <img src="images/course/cu-2.jpg" alt="Course">
-              </div>
-              <div class="price">
-                <span>Free</span>
-              </div>
-            </div>
-            <div class="cont">
-              <ul>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-              <span>(20 Reviws)</span>
-              <a href="courses-singel.html">
-                <h4>Learn basis javascirpt from start for beginner</h4>
-              </a>
-              <div class="course-teacher">
-                <div class="thum">
-                  <a href="#"><img src="images/course/teacher/t-2.jpg" alt="teacher"></a>
-                </div>
-                <div class="name">
-                  <a href="#">
-                    <h6>Mark anthem</h6>
-                  </a>
-                </div>
-                <div class="admin">
-                  <ul>
-                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="singel-course">
-            <div class="thum">
-              <div class="image">
-                <img src="images/course/cu-3.jpg" alt="Course">
-              </div>
-              <div class="price">
-                <span>Free</span>
-              </div>
-            </div>
-            <div class="cont">
-              <ul>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-              <span>(20 Reviws)</span>
-              <a href="courses-singel.html">
-                <h4>Learn basis javascirpt from start for beginner</h4>
-              </a>
-              <div class="course-teacher">
-                <div class="thum">
-                  <a href="#"><img src="images/course/teacher/t-3.jpg" alt="teacher"></a>
-                </div>
-                <div class="name">
-                  <a href="#">
-                    <h6>Mark anthem</h6>
-                  </a>
-                </div>
-                <div class="admin">
-                  <ul>
-                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="singel-course">
-            <div class="thum">
-              <div class="image">
-                <img src="images/course/cu-4.jpg" alt="Course">
-              </div>
-              <div class="price">
-                <span>Free</span>
-              </div>
-            </div>
-            <div class="cont">
-              <ul>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-              <span>(20 Reviws)</span>
-              <a href="courses-singel.html">
-                <h4>Learn basis javascirpt from start for beginner</h4>
-              </a>
-              <div class="course-teacher">
-                <div class="thum">
-                  <a href="#"><img src="images/course/teacher/t-4.jpg" alt="teacher"></a>
-                </div>
-                <div class="name">
-                  <a href="#">
-                    <h6>Mark anthem</h6>
-                  </a>
-                </div>
-                <div class="admin">
-                  <ul>
-                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="singel-course">
-            <div class="thum">
-              <div class="image">
-                <img src="images/course/cu-5.jpg" alt="Course">
-              </div>
-              <div class="price">
-                <span>Free</span>
-              </div>
-            </div>
-            <div class="cont">
-              <ul>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-              <span>(20 Reviws)</span>
-              <a href="courses-singel.html">
-                <h4>Learn basis javascirpt from start for beginner</h4>
-              </a>
-              <div class="course-teacher">
-                <div class="thum">
-                  <a href="#"><img src="images/course/teacher/t-5.jpg" alt="teacher"></a>
-                </div>
-                <div class="name">
-                  <a href="#">
-                    <h6>Mark anthem</h6>
-                  </a>
-                </div>
-                <div class="admin">
-                  <ul>
-                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-  <!--====== COURSE PART ENDS ======-->
-
-  <!--====== VIDEO FEATURE PART START ======-->
-
-  <!-- <section id="video-feature" class="bg_cover pt-60 pb-110" style="background-image: url(images/bg-1.jpg)">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 order-last order-lg-first">
-          <div class="video text-lg-left text-center pt-50">
-            <a class="Video-popup" href="https://www.youtube.com/watch?v=bRRtdzJH1oE"><i class="fa fa-play"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-5 offset-lg-1 order-first order-lg-last">
-          <div class="feature pt-50">
-            <div class="feature-title">
-              <h3>Our Facilities</h3>
-            </div>
-            <ul>
-              <li>
-                <div class="singel-feature">
-                  <div class="icon">
-                    <img src="images/all-icon/f-1.png" alt="icon">
-                  </div>
-                  <div class="cont">
-                    <h4>Global Certificate</h4>
-                    <p>Gravida nibh vel velit auctor aliquetn auci elit cons solliazcitudirem sem quibibendum sem
-                      nibhutis.</p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="singel-feature">
-                  <div class="icon">
-                    <img src="images/all-icon/f-2.png" alt="icon">
-                  </div>
-                  <div class="cont">
-                    <h4>Alumni Support</h4>
-                    <p>Gravida nibh vel velit auctor aliquetn auci elit cons solliazcitudirem sem quibibendum sem
-                      nibhutis.</p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="singel-feature">
-                  <div class="icon">
-                    <img src="images/all-icon/f-3.png" alt="icon">
-                  </div>
-                  <div class="cont">
-                    <h4>Books & Library</h4>
-                    <p>Gravida nibh vel velit auctor aliquetn auci elit cons solliazcitudirem sem quibibendum sem
-                      nibhutis.</p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div> 
-        </div>
-      </div> 
-    </div> 
-    <div class="feature-bg"></div>
-  </section> -->
-
-  <!--====== VIDEO FEATURE PART ENDS ======-->
-
-  <!--====== TEACHERS PART START ======-->
-
-  <!-- <section id="teachers-part" class="pt-70 pb-120">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5">
-          <div class="section-title mt-50">
-            <h5>Featured Teachers</h5>
-            <h2>Meet Our teachers</h2>
-          </div>
-          <div class="teachers-cont">
-            <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat
-              ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet . Morbi accumsan ipsum
-              velit. Nam nec tellus a odio tincidunt mauris. <br> <br> auci elit cons equat ipsutis sem nibh id elit.
-              Duis sed odio sit amet nibh vulputate cursus a sit amet . Morbi accumsan ipsum velit. Nam nec tellus a
-              odio tincidunt mauris</p>
-            <a href="#" class="main-btn mt-55">Career with us</a>
-          </div>
-        </div>
-        <div class="col-lg-6 offset-lg-1">
-          <div class="teachers mt-20">
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="singel-teachers mt-30 text-center">
-                  <div class="image">
-                    <img src="images/teachers/t-1.jpg" alt="Teachers">
-                  </div>
-                  <div class="cont">
-                    <a href="teachers-singel.html">
-                      <h6>Mark alen</h6>
-                    </a>
-                    <span>Vice chencelor</span>
-                  </div>
-                </div> 
-              </div>
-              <div class="col-sm-6">
-                <div class="singel-teachers mt-30 text-center">
-                  <div class="image">
-                    <img src="images/teachers/t-2.jpg" alt="Teachers">
-                  </div>
-                  <div class="cont">
-                    <a href="teachers-singel.html">
-                      <h6>David card</h6>
-                    </a>
-                    <span>Pro chencelor</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="singel-teachers mt-30 text-center">
-                  <div class="image">
-                    <img src="images/teachers/t-3.jpg" alt="Teachers">
-                  </div>
-                  <div class="cont">
-                    <a href="teachers-singel.html">
-                      <h6>Rebeka alig</h6>
-                    </a>
-                    <span>Pro chencelor</span>
-                  </div>
-                </div> 
-              </div>
-              <div class="col-sm-6">
-                <div class="singel-teachers mt-30 text-center">
-                  <div class="image">
-                    <img src="images/teachers/t-4.jpg" alt="Teachers">
-                  </div>
-                  <div class="cont">
-                    <a href="teachers-singel.html">
-                      <h6>Hanna bein</h6>
-                    </a>
-                    <span>Aerobics head</span>
-                  </div>
-                </div> 
-              </div>
-            </div>
-          </div> 
-        </div>
-      </div> 
-    </div>
-  </section> -->
-
-  <!--====== TEACHERS PART ENDS ======-->
-
-  <!--====== PUBLICATION PART START ======-->
-
-  <!-- <section id="publication-part" class="pt-115 pb-120 gray-bg">
-    <div class="container">
-      <div class="row align-items-end">
-        <div class="col-lg-6 col-md-8 col-sm-7">
-          <div class="section-title pb-60">
-            <h5>Publications</h5>
-            <h2>From Store </h2>
-          </div> 
-        </div>
-        <div class="col-lg-6 col-md-4 col-sm-5">
-          <div class="products-btn text-right pb-60">
-            <a href="#" class="main-btn">All Products</a>
-          </div>
-        </div>
-      </div> 
-      <div class="row justify-content-center">
-        <div class="col-lg-3 col-md-6 col-sm-8">
-          <div class="singel-publication mt-30">
-            <div class="image">
-              <img src="images/publication/p-1.jpg" alt="Publication">
-              <div class="add-cart">
-                <ul>
-                  <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="cont">
-              <div class="name">
-                <a href="shop-singel.html">
-                  <h6>Set for life </h6>
-                </a>
-                <span>By Scott Trench</span>
-              </div>
-              <div class="button text-right">
-                <a href="#" class="main-btn">Buy Now ($50)</a>
-              </div>
-            </div>
-          </div> 
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-8">
-          <div class="singel-publication mt-30">
-            <div class="image">
-              <img src="images/publication/p-2.jpg" alt="Publication">
-              <div class="add-cart">
-                <ul>
-                  <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="cont">
-              <div class="name">
-                <a href="shop-singel.html">
-                  <h6>A Daughters </h6>
-                </a>
-                <span>By Scott Trench</span>
-              </div>
-              <div class="button text-right">
-                <a href="#" class="main-btn">Buy Now ($30)</a>
-              </div>
-            </div>
-          </div> 
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-8">
-          <div class="singel-publication mt-30">
-            <div class="image">
-              <img src="images/publication/p-3.jpg" alt="Publication">
-              <div class="add-cart">
-                <ul>
-                  <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="cont">
-              <div class="name">
-                <a href="shop-singel.html">
-                  <h6>A Magnet </h6>
-                </a>
-                <span>By Scott Trench</span>
-              </div>
-              <div class="button text-right">
-                <a href="#" class="main-btn">Buy Now ($20)</a>
-              </div>
-            </div>
-          </div> 
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-8">
-          <div class="singel-publication mt-30">
-            <div class="image">
-              <img src="images/publication/p-4.jpg" alt="Publication">
-              <div class="add-cart">
-                <ul>
-                  <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="cont">
-              <div class="name">
-                <a href="shop-singel.html">
-                  <h6>Pices of light</h6>
-                </a>
-                <span>By Scott Trench</span>
-              </div>
-              <div class="button text-right">
-                <a href="#" class="main-btn">Buy Now ($75)</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> 
-    </div>
-  </section> -->
-
-  <!--====== PUBLICATION PART ENDS ======-->
-
-  <!--====== TEASTIMONIAL PART START ======-->
-
-  <!-- <section id="testimonial" class="bg_cover pt-115 pb-115" data-overlay="8"
-    style="background-image: url(images/bg-2.jpg)">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="section-title pb-40">
-            <h5>Testimonial</h5>
-            <h2>What they say</h2>
-          </div> 
-        </div>
-      </div> 
-      <div class="row testimonial-slied mt-40">
-        <div class="col-lg-6">
-          <div class="singel-testimonial">
-            <div class="testimonial-thum">
-              <img src="images/testimonial/t-1.jpg" alt="Testimonial">
-              <div class="quote">
-                <i class="fa fa-quote-right"></i>
-              </div>
-            </div>
-            <div class="testimonial-cont">
-              <p>Aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit
-                amet sem nibh id elit sollicitudirem </p>
-              <h6>Rubina Helen</h6>
-              <span>Bsc, Engineering</span>
-            </div>
-          </div> 
-        </div>
-        <div class="col-lg-6">
-          <div class="singel-testimonial">
-            <div class="testimonial-thum">
-              <img src="images/testimonial/t-2.jpg" alt="Testimonial">
-              <div class="quote">
-                <i class="fa fa-quote-right"></i>
-              </div>
-            </div>
-            <div class="testimonial-cont">
-              <p>Aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit
-                amet sem nibh id elit sollicitudirem </p>
-              <h6>Rubina Helen</h6>
-              <span>Bsc, Engineering</span>
-            </div>
-          </div> 
-        </div>
-        <div class="col-lg-6">
-          <div class="singel-testimonial">
-            <div class="testimonial-thum">
-              <img src="images/testimonial/t-3.jpg" alt="Testimonial">
-              <div class="quote">
-                <i class="fa fa-quote-right"></i>
-              </div>
-            </div>
-            <div class="testimonial-cont">
-              <p>Aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit
-                amet sem nibh id elit sollicitudirem </p>
-              <h6>Rubina Helen</h6>
-              <span>Bsc, Engineering</span>
-            </div>
-          </div> 
-        </div>
-      </div> 
-    </div> 
-  </section> -->
-
-  <!--====== TEASTIMONIAL PART ENDS ======-->
-
   <!--====== PATNAR LOGO PART START ======-->
 
-  <!-- <div id="patnar-logo" class="pt-40 pb-80 gray-bg">
+  <div id="patnar-logo" class="pt-40 pb-80 gray-bg">
     <div class="container">
       <div class="row patnar-slied">
         <div class="col-lg-12">
@@ -1672,117 +1027,17 @@
             <img src="images/patnar-logo/p-3.png" alt="Logo">
           </div>
         </div>
-      </div> 
-    </div> 
-  </div> -->
+      </div>
+    </div>
+  </div>
 
   <!--====== PATNAR LOGO PART ENDS ======-->
 
   <!--====== FOOTER PART START ======-->
 
-  <footer id="footer-part">
-    <div class="footer-top pt-40 pb-70">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6">
-            <div class="footer-about mt-40">
-              <div class="logo">
-                <a href="#"><img src="images/logo-2.png" alt="Logo"></a>
-              </div>
-              <p>We serve as a beacon of hope and support, providing charity and welfare to both our congregation and the broader community. Our mission is to demonstrate the love of Christ through acts of kindness, generosity, and compassionate service.</p>
-              <ul class="mt-20">
-                <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-              </ul>
-            </div> <!-- footer about -->
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="footer-link mt-40">
-              <div class="footer-title pb-25">
-                <h6>Sitemap</h6>
-              </div>
-              <ul>
-                <li><a href="index.html"><i class="fa fa-angle-right"></i>Home</a></li>
-                <li><a href="about.html"><i class="fa fa-angle-right"></i>About us</a></li>
-                <li><a href="school.html"><i class="fa fa-angle-right"></i>Our School</a></li>
-              </ul>
-              <ul>
-                <!-- <li><a href=""><i class="fa fa-angle-right"></i>Event</a></li> -->
-                <li><a href="gallery.html"><i class="fa fa-angle-right"></i>Our Gallery</a></li>
-                <li><a href="contact.html"><i class="fa fa-angle-right"></i>Contact</a></li>
-              </ul>
-            </div> <!-- footer link -->
-          </div>
-          <div class="col-lg-2 col-md-6 col-sm-6">
-            <div class="footer-link support mt-40">
-              <div class="footer-title pb-25">
-                <h6>Support</h6>
-              </div>
-              <ul>
-                <li><a href="#"><i class="fa fa-angle-right"></i>FAQS</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i>Privacy</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i>Policy</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i>Support</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i>Documentation</a></li>
-              </ul>
-            </div> <!-- support -->
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="footer-address mt-40">
-              <div class="footer-title pb-25">
-                <h6>Contact Us</h6>
-              </div>
-              <ul>
-                <li>
-                  <div class="icon">
-                    <i class="fa fa-home"></i>
-                  </div>
-                  <div class="cont">
-                    <p>Church Auditorium No. 1 Udout Jack Avenue, Shelter Afrique, Uyo, Akwa Ibom State</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="icon">
-                    <i class="fa fa-phone"></i>
-                  </div>
-                  <div class="cont">
-                    <p>+234 901 923 3509</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="icon">
-                    <i class="fa fa-envelope-o"></i>
-                  </div>
-                  <div class="cont">
-                    <p>info@arkoftrinity.org</p>
-                  </div>
-                </li>
-              </ul>
-            </div> <!-- footer address -->
-          </div>
-        </div> <!-- row -->
-      </div> <!-- container -->
-    </div> <!-- footer top -->
-
-    <div class="footer-copyright pt-10 pb-25">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <div class="copyright text-md-left text-center pt-15">
-              <p><a target="_blank" href="">AOTGM</a> </p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="copyright text-md-right text-center pt-15">
-
-            </div>
-          </div>
-        </div> <!-- row -->
-      </div> <!-- container -->
-    </div> <!-- footer copyright -->
-  </footer>
+  <?php
+  include("footer.php");
+  ?>
 
   <!--====== FOOTER PART ENDS ======-->
 
