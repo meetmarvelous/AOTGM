@@ -207,7 +207,7 @@ if (!$site) {
         <div class="row">
           <div class="col-xl-7 col-lg-9">
             <div class="slider-cont">
-              <h1 data-animation="bounceInLeft" data-delay="1s">Choose the right place for worship</h1>
+              <h1 data-animation="bounceInLeft" data-delay="1s">Grow in faith and fellowship in a place that feels like home.</h1>
               <p data-animation="fadeInUp" data-delay="1.3s">To Evangelize, Teach and Preach the Christian Religion of the Love of God through the Gospel of Jesus Christ.</p>
               <ul>
                 <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="#">Read More</a></li>
@@ -225,8 +225,8 @@ if (!$site) {
         <div class="row">
           <div class="col-xl-7 col-lg-9">
             <div class="slider-cont">
-              <h1 data-animation="bounceInLeft" data-delay="1s">Choose the right place for worship</h1>
-              <p data-animation="fadeInUp" data-delay="1.3s">To Empower and Expand People Capacity and Ability to grow through the Christian faith.To promote Alms and Giving Ministry to all people.</p>
+              <h1 data-animation="bounceInLeft" data-delay="1s">Become part of the Ark of Trinity Gospel Ministry family!</h1>
+              <p data-animation="fadeInUp" data-delay="1.3s">Experience spirit-led worship, transformative teachings, and a community rooted in Christ's love.</p>
               <ul>
                 <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="#">Read More</a></li>
                 <li><a data-animation="fadeInUp" data-delay="1.9s" class="main-btn main-btn-2" href="#">Get Started</a>
@@ -321,17 +321,15 @@ if (!$site) {
         <div class="row no-gutters">
           <div class="col-lg-6">
             <div class="apply-cont apply-color-1">
-              <h3>Apply for ARK OF TRINITY MONTESSORI SCHOOL</h3>
-              <p>Gravida nibh vel velit auctor aliquetn sollicitudirem sem quibibendum auci elit cons equat ipsutis sem
-                nibh id elituis sed odio sit amet nibh vulputate cursus equat ipsutis.</p>
-              <a href="#" class="main-btn">Apply Now</a>
+              <h3>Join Ark of Trinity Gospel Ministry family!</h3>
+              <p>Become part of the Ark of Trinity Gospel Ministry family! Experience spirit-led worship, transformative teachings, and a community rooted in Christ's love. </p>
+              <a href="#" class="main-btn">Join us today!</a>
             </div> <!-- apply cont -->
           </div>
           <div class="col-lg-6">
             <div class="apply-cont apply-color-2">
               <h3>Apply for ARK OF TRINITY MONTESSORI SCHOOL</h3>
-              <p>Gravida nibh vel velit auctor aliquetn sollicitudirem sem quibibendum auci elit cons equat ipsutis sem
-                nibh id elituis sed odio sit amet nibh vulputate cursus equat ipsutis.</p>
+              <p>Join the Ark of Trinity Montessori School today! Empower your child with a solid academic and spiritual foundation for a brighter future. Apply Now!</p>
               <a href="#" class="main-btn">Apply Now</a>
             </div> <!-- apply cont -->
           </div>
@@ -484,7 +482,10 @@ if (!$site) {
                     THAT WILL BE OUR GUIDE</i>
                 </p>
 
+                <a href="#" class="main-btn">Read More</a>
 
+
+<!-- 
                 <h3>2. General School Rules</h3>
 
                 <h4>A. School Days Schedule</h5>
@@ -560,7 +561,7 @@ if (!$site) {
                       <li>Parents will also review assessment booklets and discuss expectations for the next academic
                         session.</li>
                     </ul>
-              </div>
+              </div> -->
               <!-- 
               <h3>3. School Fees, Enrollment, and Withdrawal Policy</h3>
 

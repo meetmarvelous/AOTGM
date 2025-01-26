@@ -1,0 +1,6 @@
+# Ignore specific files
+
+# Ignore specific folders
+fix/
+admin/
+include/

@@ -88,7 +88,7 @@ if (!$site) {
           <div class="col-lg-6">
             <div class="header-contact text-lg-left text-center">
               <ul>
-                <li><img src="images/all-icon/map.png" alt="icon"><span><?php echo $site['address']; ?></span>
+                <li><img src="images/all-icon/map.png" alt="icon"><span>Shelter Afrique, Uyo, Akwa Ibom State</span>
                 </li>
                 <li><img src="images/all-icon/email.png" alt="icon"><span><?php echo $site['email']; ?></span></li>
               </ul>
@@ -202,7 +202,7 @@ if (!$site) {
   <!--====== PAGE BANNER PART START ======-->
 
   <section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8"
-    style="background-image: url(images/page-banner-1.jpg)">
+    style="background-image: url(images/about_banner.png)">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">

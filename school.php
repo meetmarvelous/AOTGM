@@ -88,7 +88,7 @@ if (!$site) {
           <div class="col-lg-6">
             <div class="header-contact text-lg-left text-center">
               <ul>
-                <li><img src="images/all-icon/map.png" alt="icon"><span><?php echo $site['address']; ?></span>
+                <li><img src="images/all-icon/map.png" alt="icon"><span>Shelter Afrique, Uyo, Akwa Ibom State</span>
                 </li>
                 <li><img src="images/all-icon/email.png" alt="icon"><span><?php echo $site['email']; ?></span></li>
               </ul>
@@ -211,7 +211,7 @@ if (!$site) {
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                <li class="breadcrumb-item active" aria-current="page">Our School</li>
               </ol>
             </nav>
           </div> <!-- page banner cont -->

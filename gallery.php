@@ -151,7 +151,7 @@ if (!$site) {
           <div class="col-lg-6">
             <div class="header-contact text-lg-left text-center">
               <ul>
-                <li><img src="images/all-icon/map.png" alt="icon"><span><?php echo $site['address']; ?></span>
+                <li><img src="images/all-icon/map.png" alt="icon"><span>Shelter Afrique, Uyo, Akwa Ibom State</span>
                 </li>
                 <li><img src="images/all-icon/email.png" alt="icon"><span><?php echo $site['email']; ?></span></li>
               </ul>
@@ -293,7 +293,67 @@ if (!$site) {
       <div class="gallery-area mb-3">
         <div class="row">
           <div class="col-lg-12">
-            <h4 class="text-center">Gallery 1 znxbehi jilbnxitg bxgtnbxecn zrfwxi nitvntg vzwxv nivntv</h>
+            <h4 class="text-center">Gallery 1 - Just Testing</h>
+              <div class="gallery-page">
+                <div id="gallery-container">
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
+                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
+                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/img6.jpg">
+                    <img src="images/img6.jpg" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
+                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
+                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/bg-2.jpg">
+                    <img src="images/bg-2.jpg" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/img2.jpg">
+                    <img src="images/img2.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/favicon.png">
+                    <img src="images/favicon.png" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/page-banner-5.jpg">
+                    <img src="images/page-banner-5.jpg" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
+                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/img4.jpg">
+                    <img src="images/img4.jpg" alt="Wintry Mountain Landscape">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/logo old.png">
+                    <img src="images/logo old.png" alt="Mountains in the Clouds">
+                  </a>
+                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
+                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
+                  </a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-area mb-3">
+        <div class="row">
+          <div class="col-lg-12">
+            <h4 class="text-center">Gallery 2 - To be Edited</h>
               <div class="gallery-page">
                 <div id="gallery-container">
                   <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
@@ -353,67 +413,7 @@ if (!$site) {
       <div class="gallery-area mb-3">
         <div class="row">
           <div class="col-lg-12">
-            <h4 class="text-center">Gallery 1 znxbehi jilbnxitg bxgtnbxecn zrfwxi nitvntg vzwxv nivntv</h>
-              <div class="gallery-page">
-                <div id="gallery-container">
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
-                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
-                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/bg-2.jpg">
-                    <img src="images/bg-2.jpg" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
-                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
-                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/bg-2.jpg">
-                    <img src="images/bg-2.jpg" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/img2.jpg">
-                    <img src="images/img2.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/favicon.png">
-                    <img src="images/favicon.png" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/page-banner-5.jpg">
-                    <img src="images/page-banner-5.jpg" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
-                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/img4.jpg">
-                    <img src="images/img4.jpg" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/logo old.png">
-                    <img src="images/logo old.png" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-area mb-3">
-        <div class="row">
-          <div class="col-lg-12">
-            <h4 class="text-center">Gallery 1 znxbehi jilbnxitg bxgtnbxecn zrfwxi nitvntg vzwxv nivntv</h>
+            <h4 class="text-center">Gallery 3 - Just A Test</h>
               <div class="gallery-page">
                 <div id="gallery-container">
                   <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">

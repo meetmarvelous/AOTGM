@@ -88,7 +88,7 @@ if (!$site) {
           <div class="col-lg-6">
             <div class="header-contact text-lg-left text-center">
               <ul>
-                <li><img src="images/all-icon/map.png" alt="icon"><span><?php echo $site['address']; ?></span>
+                <li><img src="images/all-icon/map.png" alt="icon"><span>Shelter Afrique, Uyo, Akwa Ibom State</span>
                 </li>
                 <li><img src="images/all-icon/email.png" alt="icon"><span><?php echo $site['email']; ?></span></li>
               </ul>
@@ -291,7 +291,7 @@ if (!$site) {
                     <i class="fa fa-home"></i>
                   </div>
                   <div class="cont">
-                    <p>143 castle road 517 district, kiyev port south Canada</p>
+                    <p><?php echo $site['address']; ?></p>
                   </div>
                 </div> <!-- singel address -->
               </li>
@@ -301,7 +301,7 @@ if (!$site) {
                     <i class="fa fa-phone"></i>
                   </div>
                   <div class="cont">
-                    <p>+3 123 456 789</p>
+                    <p><?php echo $site['phone']; ?></p>
                     <p>+1 222 345 342</p>
                   </div>
                 </div> <!-- singel address -->
@@ -312,16 +312,16 @@ if (!$site) {
                     <i class="fa fa-envelope-o"></i>
                   </div>
                   <div class="cont">
-                    <p>info@yourmail.com</p>
-                    <p>info@yourmail.com</p>
+                    <p><?php echo $site['email']; ?></p>
+                    <p><?php echo $site['email']; ?></p>
                   </div>
                 </div> <!-- singel address -->
               </li>
             </ul>
           </div>
-          <div class="map mt-30">
+          <!-- <div class="map mt-30">
             <div id="contact-map"></div>
-          </div>
+          </div> -->
         </div>
       </div> <!-- row -->
     </div> <!-- container -->
