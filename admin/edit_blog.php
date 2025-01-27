@@ -5,8 +5,8 @@ require_once 'nav/sidebar.php';
 
 $blo = mysqli_query($dbcon, "SELECT * FROM posts");
 $blog_count = mysqli_num_rows($blo);
-$blogcat = mysqli_query($dbcon, "SELECT * FROM blog_category");
-$cat_count = mysqli_num_rows($blogcat);
+// $blogcat = mysqli_query($dbcon, "SELECT * FROM blog_category");
+// $cat_count = mysqli_num_rows($blogcat);
 
 $id = (int)$_GET['id'];
 if ($id < 1) {

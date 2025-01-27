@@ -13,6 +13,12 @@
             <li class="dropdown">
               <a href="settings.php" class="nav-link"><i data-feather="monitor"></i><span>Website Settings</span></a>
             </li>
+            <li class="dropdown">
+              <a href="church.php" class="nav-link"><i data-feather="monitor"></i><span>Church Details</span></a>
+            </li>
+            <li class="dropdown">
+              <a href="school.php" class="nav-link"><i data-feather="monitor"></i><span>School Details</span></a>
+            </li>
             <!-- <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Message</span></a>
               <ul class="dropdown-menu">
@@ -22,26 +28,26 @@
               </ul>
             </li> -->
 
-            <li class="menu-header">Management</li>
+            <li class="menu-header">Gallery Management</li>
 
             <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Project Management</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Gallery Management</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="add_project.php">Add New Project</a></li>
-                <li><a class="nav-link" href="project.php">All Projects</a></li>
-                <!-- <li><a class="nav-link" href="project_category.php">Add Project Category</a></li> -->
+                <li><a class="nav-link" href="#">Add New Pictures</a></li>
+                <li><a class="nav-link" href="#">All Pcitures</a></li>
+                <li><a class="nav-link" href="#">Add Gallery Category</a></li>
               </ul>
             </li>
 
 
-            <li class="dropdown">
+            <!-- <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Blog Management</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="add_blog.php">Add New Blog Post</a></li>
                 <li><a class="nav-link" href="blog.php">All Blog Posts</a></li>
                 <li><a class="nav-link" href="add_blog_category.php">Add Blog Category</a></li>
               </ul>
-            </li>
+            </li> -->
 
             <li class="menu-header">Exit</li>
 
