@@ -5,14 +5,16 @@
         <div class="col-lg-4 col-md-6">
           <div class="footer-about mt-40">
             <div class="logo">
-              <a href="#"><img src="images/logo-2.png" alt="Logo"></a>
+              <a href="#"><img src="images/logo-2.svg" alt="Logo"></a>
             </div>
-            <p>We serve as a beacon of hope and support, providing charity and welfare to both our congregation and the broader community. Our mission is to demonstrate the love of Christ through acts of kindness, generosity, and compassionate service.</p>
+            <!-- <p>We serve as a beacon of hope and support, providing charity and welfare to both our congregation and the broader community. Our mission is to demonstrate the love of Christ through acts of kindness, generosity, and compassionate service.</p> -->
+            <?php echo $church['about']; ?>
             <ul class="mt-20">
-              <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="<?php echo $site['facebook_link']?>"><i class="fa fa-facebook-f"></i></a></li>
+              <li><a href="<?php echo $site['twitter_link']?>"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="<?php echo $site['whatsapp_link']?>"><i class="fa fa-whatsapp"></i></a></li>
+              <li><a href="<?php echo $site['instagram_link']?>"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="<?php echo $site['youtube_link']?>"><i class="fa fa-youtube-play "></i></a></li>
             </ul>
           </div> <!-- footer about -->
         </div>
@@ -22,14 +24,14 @@
               <h6>Sitemap</h6>
             </div>
             <ul>
-              <li><a href="index.html"><i class="fa fa-angle-right"></i>Home</a></li>
-              <li><a href="about.html"><i class="fa fa-angle-right"></i>About us</a></li>
-              <li><a href="school.html"><i class="fa fa-angle-right"></i>Our School</a></li>
+              <li><a href="index.php"><i class="fa fa-angle-right"></i>Home</a></li>
+              <li><a href="about.php"><i class="fa fa-angle-right"></i>About us</a></li>
+              <li><a href="school.php"><i class="fa fa-angle-right"></i>Our School</a></li>
             </ul>
             <ul>
               <!-- <li><a href=""><i class="fa fa-angle-right"></i>Event</a></li> -->
-              <li><a href="gallery.html"><i class="fa fa-angle-right"></i>Our Gallery</a></li>
-              <li><a href="contact.html"><i class="fa fa-angle-right"></i>Contact</a></li>
+              <li><a href="gallery.php"><i class="fa fa-angle-right"></i>Our Gallery</a></li>
+              <li><a href="contact.php"><i class="fa fa-angle-right"></i>Contact</a></li>
             </ul>
           </div> <!-- footer link -->
         </div>

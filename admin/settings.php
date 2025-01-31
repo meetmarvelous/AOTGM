@@ -19,7 +19,6 @@ $youtube_link = $site['youtube_link'];
 $instagram_link = $site['instagram_link'];
 $twitter_link = $site['twitter_link'];
 $linkedin_link = $site['linkedin_link'];
-$github_link = $site['github_link'];
 $web_link = $site['web_link'];
 $work_hours = $site['work_hours'];
 $work_days = $site['work_days'];
@@ -43,7 +42,26 @@ if (isset($_POST['change1'])) {
   $email = mysqli_real_escape_string($dbcon, $email);
   $address = mysqli_real_escape_string($dbcon, $address);
 
-  $change1 = mysqli_query($dbcon, "UPDATE site_info SET webname='$webname', phone_no= '$phone_no', email='$email', address='$address' where site_id='$myid' ");
+  function formatPhoneNumber($phone_no)
+  {
+    // Remove any non-digit characters except '+'
+    $phone_no = preg_replace('/[^\d\+]/', '', $phone_no);
+
+    // Check if the number starts with +234
+    if (strpos($phone_no, '+234') === 0) {
+      return '+234 ' . substr($phone_no, 4, 3) . ' ' . substr($phone_no, 7, 3) . ' ' . substr($phone_no, 10);
+    }
+    // Check if the number starts with 0
+    elseif (strpos($phone_no, '0') === 0) {
+      return substr($phone_no, 0, 4) . ' ' . substr($phone_no, 4, 3) . ' ' . substr($phone_no, 7);
+    }
+    // Return the number unformatted if it doesn't match expected patterns
+    return $phone_no;
+  }
+
+  $phone = formatPhoneNumber($phone_no);
+
+  $change1 = mysqli_query($dbcon, "UPDATE site_info SET webname='$webname', phone_no= '$phone_no', phone= '$phone', email='$email', address='$address' where site_id='$myid' ");
 
   if ($change1) {
     echo "<script>window.alert('successfully updated!'); window.location='settings.php';</script>";
@@ -54,29 +72,27 @@ if (isset($_POST['change1'])) {
 
 if (isset($_POST['change2'])) {
 
-  $welcome_note = stripslashes($_POST["welcome_note"]);
-  $work_hours = stripslashes($_POST["work_hours"]);
-  $work_days = stripslashes($_POST["work_days"]);
+  // $welcome_note = stripslashes($_POST["welcome_note"]);
+  // $work_hours = stripslashes($_POST["work_hours"]);
+  // $work_days = stripslashes($_POST["work_days"]);
   $facebook_link = stripslashes($_POST["facebook_link"]);
   $whatsapp_link = stripslashes($_POST["whatsapp_link"]);
   $instagram_link = stripslashes($_POST["instagram_link"]);
   $youtube_link = stripslashes($_POST["youtube_link"]);
   $twitter_link = stripslashes($_POST["twitter_link"]);
-  $github_link = stripslashes($_POST["github_link"]);
   $web_link = stripslashes($_POST["web_link"]);
 
-  $welcome_note = mysqli_real_escape_string($dbcon, $welcome_note);
-  $work_hours = mysqli_real_escape_string($dbcon, $work_hours);
-  $work_days = mysqli_real_escape_string($dbcon, $work_days);
+  // $welcome_note = mysqli_real_escape_string($dbcon, $welcome_note);
+  // $work_hours = mysqli_real_escape_string($dbcon, $work_hours);
+  // $work_days = mysqli_real_escape_string($dbcon, $work_days);
   $facebook_link = mysqli_real_escape_string($dbcon, $facebook_link);
   $whatsapp_link = mysqli_real_escape_string($dbcon, $whatsapp_link);
   $instagram_link = mysqli_real_escape_string($dbcon, $instagram_link);
   $youtube_link = mysqli_real_escape_string($dbcon, $youtube_link);
   $twitter_link = mysqli_real_escape_string($dbcon, $twitter_link);
-  $github_link = mysqli_real_escape_string($dbcon, $github_link);
   $web_link = mysqli_real_escape_string($dbcon, $web_link);
 
-  $change2 = mysqli_query($dbcon, "UPDATE site_info SET welcome_note='$welcome_note', work_hours= '$work_hours', work_days='$work_days', facebook_link='$facebook_link', whatsapp_link='$whatsapp_link', instagram_link='$instagram_link', youtube_link='$youtube_link', github_link='$github_link', twitter_link='$twitter_link', web_link='$web_link' where site_id='$myid' ");
+  $change2 = mysqli_query($dbcon, "UPDATE site_info SET facebook_link='$facebook_link', whatsapp_link='$whatsapp_link', instagram_link='$instagram_link', youtube_link='$youtube_link', twitter_link='$twitter_link', web_link='$web_link' where site_id='$myid' ");
 
   if ($change2) {
     echo "<script>window.alert('successfully updated!'); window.location='settings.php';</script>";
@@ -103,21 +119,21 @@ if (isset($_POST['change3'])) {
 }
 
 if (isset($_POST["imgchange1"])) {
-	// code to store image file
-	$fileInfo = PATHINFO($_FILES["header_logo"]["name"]);
+  // code to store image file
+  $fileInfo = PATHINFO($_FILES["header_logo"]["name"]);
   $fileInfo['extension'] = strtolower($fileInfo['extension']);
-	if ($fileInfo['extension'] == "png" or $fileInfo['extension'] == "jpg" or $fileInfo['extension'] == "jpeg") {
+  if ($fileInfo['extension'] == "png" or $fileInfo['extension'] == "jpg" or $fileInfo['extension'] == "jpeg") {
 
-		$filename = $_FILES["header_logo"]["name"];
-		$tempname = $_FILES["header_logo"]["tmp_name"];
+    $filename = $_FILES["header_logo"]["name"];
+    $tempname = $_FILES["header_logo"]["tmp_name"];
 
-		$newFileName = $fileInfo['filename'] . "-" . time() . "." . $fileInfo['extension'];
-		$folder = "../assets/images/logo/" . $newFileName;
+    $newFileName = $fileInfo['filename'] . "-" . time() . "." . $fileInfo['extension'];
+    $folder = "../assets/images/logo/" . $newFileName;
 
-		// Now let's move the uploaded file into the folder: ebook    
-		move_uploaded_file($tempname, $folder);
-		// Get all the submitted data from the form
-    
+    // Now let's move the uploaded file into the folder: ebook    
+    move_uploaded_file($tempname, $folder);
+    // Get all the submitted data from the form
+
     $imgchange1 = mysqli_query($dbcon, "UPDATE site_info SET header_logo='$newFileName' where site_id='$myid' ");
 
     if ($imgchange1) {
@@ -125,27 +141,27 @@ if (isset($_POST["imgchange1"])) {
     } else {
       echo "<script>window.alert('Failed to update Info!');</script>";
     }
-	} else {
-		echo "<script>window.alert('This Image type is not supported yet. PNG,JPEG and JPG File only!');</script>";
-	}
+  } else {
+    echo "<script>window.alert('This Image type is not supported yet. PNG,JPEG and JPG File only!');</script>";
+  }
 }
 
 if (isset($_POST["imgchange2"])) {
-	// code to store image file
-	$fileInfo = PATHINFO($_FILES["footer_logo"]["name"]);
+  // code to store image file
+  $fileInfo = PATHINFO($_FILES["footer_logo"]["name"]);
   $fileInfo['extension'] = strtolower($fileInfo['extension']);
-	if ($fileInfo['extension'] == "png" or $fileInfo['extension'] == "jpg" or $fileInfo['extension'] == "jpeg") {
+  if ($fileInfo['extension'] == "png" or $fileInfo['extension'] == "jpg" or $fileInfo['extension'] == "jpeg") {
 
-		$filename = $_FILES["footer_logo"]["name"];
-		$tempname = $_FILES["footer_logo"]["tmp_name"];
+    $filename = $_FILES["footer_logo"]["name"];
+    $tempname = $_FILES["footer_logo"]["tmp_name"];
 
-		$newFileName = $fileInfo['filename'] . "-" . time() . "." . $fileInfo['extension'];
-		$folder = "../assets/images/logo/" . $newFileName;
+    $newFileName = $fileInfo['filename'] . "-" . time() . "." . $fileInfo['extension'];
+    $folder = "../assets/images/logo/" . $newFileName;
 
-		// Now let's move the uploaded file into the folder: ebook    
-		move_uploaded_file($tempname, $folder);
-		// Get all the submitted data from the form
-    
+    // Now let's move the uploaded file into the folder: ebook    
+    move_uploaded_file($tempname, $folder);
+    // Get all the submitted data from the form
+
     $imgchange2 = mysqli_query($dbcon, "UPDATE site_info SET footer_logo='$newFileName' where site_id='$myid' ");
 
     if ($imgchange2) {
@@ -153,27 +169,27 @@ if (isset($_POST["imgchange2"])) {
     } else {
       echo "<script>window.alert('Failed to update Info!');</script>";
     }
-	} else {
-		echo "<script>window.alert('This Image type is not supported yet. PNG,JPEG and JPG File only!');</script>";
-	}
+  } else {
+    echo "<script>window.alert('This Image type is not supported yet. PNG,JPEG and JPG File only!');</script>";
+  }
 }
 
 if (isset($_POST["iconchange"])) {
-	// code to store image file
-	$fileInfo = PATHINFO($_FILES["icon"]["name"]);
+  // code to store image file
+  $fileInfo = PATHINFO($_FILES["icon"]["name"]);
   $fileInfo['extension'] = strtolower($fileInfo['extension']);
-	if ($fileInfo['extension'] == "png" or $fileInfo['extension'] == "jpg" or $fileInfo['extension'] == "jpeg") {
+  if ($fileInfo['extension'] == "png" or $fileInfo['extension'] == "jpg" or $fileInfo['extension'] == "jpeg") {
 
-		$filename = $_FILES["icon"]["name"];
-		$tempname = $_FILES["icon"]["tmp_name"];
+    $filename = $_FILES["icon"]["name"];
+    $tempname = $_FILES["icon"]["tmp_name"];
 
-		$newFileName = $fileInfo['filename'] . "-" . time() . "." . $fileInfo['extension'];
-		$folder = "../assets/images/logo/" . $newFileName;
+    $newFileName = $fileInfo['filename'] . "-" . time() . "." . $fileInfo['extension'];
+    $folder = "../assets/images/logo/" . $newFileName;
 
-		// Now let's move the uploaded file into the folder: ebook    
-		move_uploaded_file($tempname, $folder);
-		// Get all the submitted data from the form
-    
+    // Now let's move the uploaded file into the folder: ebook    
+    move_uploaded_file($tempname, $folder);
+    // Get all the submitted data from the form
+
     $iconchange = mysqli_query($dbcon, "UPDATE site_info SET icon='$newFileName' where site_id='$myid' ");
 
     if ($iconchange) {
@@ -181,9 +197,9 @@ if (isset($_POST["iconchange"])) {
     } else {
       echo "<script>window.alert('Failed to update Info!');</script>";
     }
-	} else {
-		echo "<script>window.alert('This Image type is not supported yet. PNG,JPEG and JPG File only!');</script>";
-	}
+  } else {
+    echo "<script>window.alert('This Image type is not supported yet. PNG,JPEG and JPG File only!');</script>";
+  }
 }
 
 ?>
@@ -204,8 +220,8 @@ if (isset($_POST["iconchange"])) {
       </div>
 
       <div class="row">
-        
-      <!-- <div class="col-12">
+
+        <!-- <div class="col-12">
           <div class="card">
             <div class="card-body">
               <button class="btn btn-primary" onclick="window.history.back();">
@@ -214,7 +230,7 @@ if (isset($_POST["iconchange"])) {
             </div>
           </div>
       </div>         -->
-        
+
         <div class="col-12 col-md-4">
           <div class="card">
             <div class="card-header">
@@ -238,8 +254,8 @@ if (isset($_POST["iconchange"])) {
                 </div>
 
                 <div class="form-group">
-                  <label>Address</label>
-                  <textarea class="summernote-simple" name="address" required><?php echo htmlspecialchars($address); ?></textarea>
+                  <label>Address</label><br>
+                  <textarea rows="5" cols="30" class="" name="address" required><?php echo htmlspecialchars($address); ?></textarea>
                 </div>
 
                 <div class="form-group form-button">
@@ -256,14 +272,14 @@ if (isset($_POST["iconchange"])) {
                 <div class="form-group form-button">
                   <button type="submit" name="imgchange1" class="btn btn-fill col-md-12 btn-primary">Submit</button>
                 </div>
-                
+
               </form>
               <form method="POST" enctype="multipart/form-data">
-              <div class="form-group">
+                <div class="form-group">
                   <label>Footer Logo</label>
                   <input type="file" name="footer_logo" class="form-control" required>
                 </div>
-                
+
                 <div class="form-group form-button">
                   <button type="submit" name="imgchange2" class="btn btn-fill col-md-12 btn-primary">Submit</button>
                 </div>
@@ -281,59 +297,39 @@ if (isset($_POST["iconchange"])) {
             <div class="card-body">
               <form method="POST">
 
-              <div class="form-group">
-                <label>Welcome Note</label>
-                <textarea class="summernote-simple" name="welcome_note" required><?php echo htmlspecialchars($welcome_note); ?></textarea>
-              </div>
+                <div class="form-group">
+                  <label>Facebook Link</label>
+                  <input type="text" class="form-control" value="<?php echo htmlspecialchars($facebook_link); ?>" name="facebook_link" required>
+                </div>
 
-              <div class="form-group">
-                <label>Working Hours</label>
-                <input type="text" class="form-control" value="<?php echo htmlspecialchars($work_hours); ?>" name="work_hours" required>
-              </div>
+                <div class="form-group">
+                  <label>Whatsapp Link</label>
+                  <input type="text" class="form-control" value="<?php echo htmlspecialchars($whatsapp_link); ?>" name="whatsapp_link" required>
+                </div>
 
-              <div class="form-group">
-                <label>Working Days</label>
-                <input type="text" class="form-control" value="<?php echo htmlspecialchars($work_days); ?>" name="work_days" required>
-              </div>
+                <div class="form-group">
+                  <label>Instagram Link</label>
+                  <input type="text" class="form-control" value="<?php echo htmlspecialchars($instagram_link); ?>" name="instagram_link" required>
+                </div>
 
-              <div class="form-group">
-                <label>Facebook Link</label>
-                <input type="text" class="form-control" value="<?php echo htmlspecialchars($facebook_link); ?>" name="facebook_link" required>
-              </div>
+                <div class="form-group">
+                  <label>Twitter Link</label>
+                  <input type="text" class="form-control" value="<?php echo htmlspecialchars($twitter_link); ?>" name="twitter_link" required>
+                </div>
 
-              <div class="form-group">
-                <label>Whatsapp Link</label>
-                <input type="text" class="form-control" value="<?php echo htmlspecialchars($whatsapp_link); ?>" name="whatsapp_link" required>
-              </div>
+                <div class="form-group">
+                  <label>YouTube Link</label>
+                  <input type="text" class="form-control" value="<?php echo htmlspecialchars($youtube_link); ?>" name="youtube_link" required>
+                </div>
 
-              <div class="form-group">
-                <label>Instagram Link</label>
-                <input type="text" class="form-control" value="<?php echo htmlspecialchars($instagram_link); ?>" name="instagram_link" required>
-              </div>
+                <div class="form-group">
+                  <label>Website Link</label>
+                  <input type="text" class="form-control" value="<?php echo htmlspecialchars($web_link); ?>" name="web_link" required>
+                </div>
 
-              <div class="form-group">
-                <label>Twitter Link</label>
-                <input type="text" class="form-control" value="<?php echo htmlspecialchars($twitter_link); ?>" name="twitter_link" required>
-              </div>
-
-              <div class="form-group">
-                <label>YouTube Link</label>
-                <input type="text" class="form-control" value="<?php echo htmlspecialchars($youtube_link); ?>" name="youtube_link" required>
-              </div>
-
-              <div class="form-group">
-                <label>GitHub Link</label>
-                <input type="text" class="form-control" value="<?php echo htmlspecialchars($github_link); ?>" name="github_link" required>
-              </div>
-
-              <div class="form-group">
-                <label>Website Link</label>
-                <input type="text" class="form-control" value="<?php echo htmlspecialchars($web_link); ?>" name="web_link" required>
-              </div>
-
-              <div class="form-group form-button">
-                <button type="submit" name="change2" class="btn btn-fill col-md-12 btn-primary">Update Information</button>
-              </div>
+                <div class="form-group form-button">
+                  <button type="submit" name="change2" class="btn btn-fill col-md-12 btn-primary">Update Information</button>
+                </div>
               </form>
             </div>
           </div>
@@ -367,10 +363,10 @@ if (isset($_POST["iconchange"])) {
                   <label>Website Icon</label>
                   <div id="image-preview" class="image-preview">
                     <label for="image-upload" id="image-label">Choose File</label>
-                    <input type="file" name="icon" id="image-upload" required/>
+                    <input type="file" name="icon" id="image-upload" required />
                   </div>
                 </div>
-                
+
                 <div class="form-group form-button">
                   <button type="submit" name="iconchange" class="btn btn-fill col-md-12 btn-primary">Submit</button>
                 </div>

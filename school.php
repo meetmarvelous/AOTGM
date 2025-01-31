@@ -4,8 +4,21 @@ require_once 'include/connect.php';
 $query = mysqli_query($dbcon, "SELECT * FROM site_info");
 $site = mysqli_fetch_array($query);
 if (!$site) {
-  die("error in selecting data from blog database");
+	die("error in selecting data from blog database");
 }
+
+$queryy = mysqli_query($dbcon, "SELECT * FROM church");
+$church = mysqli_fetch_array($queryy);
+if (!$church) {
+	die("error in selecting data from blog database");
+}
+
+$queryyy = mysqli_query($dbcon, "SELECT * FROM school");
+$school = mysqli_fetch_array($queryyy);
+if (!$school) {
+	die("error in selecting data from blog database");
+}
+
 ?>
 
 <!doctype html>
@@ -109,7 +122,7 @@ if (!$site) {
           <div class="col-lg-4 col-md-4">
             <div class="logo">
               <a href="index.php">
-                <img src="images/logo.png" alt="Logo">
+                <img src="images/logo.svg" alt="Logo">
               </a>
             </div>
           </div>
@@ -125,7 +138,7 @@ if (!$site) {
                 </div>
               </div>
               <div class="button float-left">
-                <a href="#" class="main-btn">Apply Now</a>
+                <a href="<?php echo $site['whatsapp_link']?>" class="main-btn">Apply Now</a>
               </div>
             </div>
           </div>
@@ -235,12 +248,13 @@ if (!$site) {
 
           </div> <!-- section title -->
           <div class="about-cont">
-            <p>
+          <?php echo $school['about']; ?>
+            <!-- <p>
               This School is dedicated to the training of children in programs of study, activity, and a lifestyle
               that is Bible-centered. Students are trained to adhere to the School’s philosophy and Biblical-based
               programs. We believe that “all things should be done decently and in order” and that our learners
               should be taught to accept responsibility to “walk honorably before all men.”
-            </p>
+            </p> -->
           </div>
         </div> <!-- about cont -->
         <div class="col-lg-7">
@@ -255,14 +269,16 @@ if (!$site) {
             <div class="about-singel-items mt-30">
               <span>01</span>
               <h4>Our vision</h4>
-              <p>We seek to graduate children that are wholesome, scholarly, skilled and confident. </p>
+              <?php echo $school['vision']; ?>
+              <!-- <p>We seek to graduate children that are wholesome, scholarly, skilled and confident. </p> -->
             </div> <!-- about singel -->
           </div>
           <div class="col-lg-4 col-md-6 col-sm-10">
             <div class="about-singel-items mt-30">
               <span>02</span>
               <h4>Our Mission</h4>
-              <p>Our benefits include:</p>
+              <?php echo $school['mission']; ?>
+              <!-- <p>Our benefits include:</p>
               <ul>
                 <li>Christian faith-based environment and learning</li>
                 <li>Loving and charitable learning atmosphere</li>
@@ -273,14 +289,15 @@ if (!$site) {
                 <li>Extracurricular activities and skills acquisition</li>
                 <li>Firm corrective discipline</li>
                 <li>Wholesomeness and wellbeing</li>
-              </ul>
+              </ul> -->
             </div> <!-- about singel -->
           </div>
           <div class="col-lg-4 col-md-6 col-sm-10">
             <div class="about-singel-items mt-30">
               <span>03</span>
               <h4>Core Values </h4>
-              <p>
+              <?php echo $school['value']; ?>
+              <!-- <p>
                 This School is dedicated to the training of children in programs of study, activity, and a lifestyle
                 that is Bible-centered. Students are trained to adhere to the School’s philosophy and Biblical-based
                 programs. We believe that “all things should be done decently and in order” and that our learners
@@ -290,7 +307,7 @@ if (!$site) {
                 Our bodies are the temples of the Holy Spirit; therefore, we train and educate all our students to
                 abstain from anything and everything that could destroy their lives as viewed from a Biblical point.
                 We pray that with innovative learning tools and strategies, our students will come out on top.
-              </p>
+              </p> -->
             </div> <!-- about singel -->
           </div>
         </div> <!-- row -->
@@ -362,7 +379,7 @@ if (!$site) {
                 <p>The Lord bless you, forevermore.</p>
                 <p><strong>Reverend (Dr. Mrs.) Victoria Onofiok Kinlock</strong><br>(Proprietor)</p>
               </div>
-
+<!-- 
               <div>
                 <h4>B. Our Vision</h4>
                 <p>We seek to graduate children that are wholesome, scholarly, skilled, and confident.</p>
@@ -397,10 +414,10 @@ if (!$site) {
                   abstain from anything and everything that could destroy their lives as viewed from a Biblical point.
                   We pray that with innovative learning tools and strategies, our students will come out on top.
                 </p>
-              </div>
+              </div> -->
 
               <div>
-                <h4>E. School Motto</h4>
+                <h4>B. School Motto</h4>
                 <p><strong>Knowledge. Discipline & Charity</strong></p>
 
                 <h5>Knowledge</h5>
@@ -423,7 +440,7 @@ if (!$site) {
                   our ventures have these bases. We will teach these values to the children, so that the world will be a
                   better place.</p>
 
-                <h4>F. School Anthem & Pledge</h4>
+                <h4>C. School Anthem & Pledge</h4>
                 <p><i>1. OUR DEAR AOTGM MONTESSORI SCHOOL<br>
                     OUR HEARTS AND TONGUES ARE FILLED UP<br>
                     WITH PRAISES AND THANKS<br>
@@ -520,7 +537,7 @@ if (!$site) {
                     </ul>
               </div>
 
-              <h3>3. School Fees, Enrollment, and Withdrawal Policy</h3>
+              <!-- <h3>3. School Fees, Enrollment, and Withdrawal Policy</h3>
 
               <p>All new students are admitted on probation for the first six weeks.</p>
 
@@ -811,7 +828,7 @@ if (!$site) {
                   <li><strong>Proverbs 22:15:</strong> “Foolishness is bound in the heart of a child; but the rod of
                     correction shall drive it far from him.”</li>
                 </ul>
-              </ul>
+              </ul> -->
               <!-- 
               <div>
                 <h3>Ark of Trinity G.M Altars and Groups</h3>

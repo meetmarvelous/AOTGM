@@ -28,7 +28,6 @@ include("nav/sidebar.php");
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                   <div class="card-content">
                     <h5 class="font-15">Website Settings</h5>
-                    <h2 class="mb-3 font-18">1</h2>
                     <p class="mb-0"><span class="col-green"><a href="settings.php">View All</a></span></p>
                   </div>
                 </div>
@@ -49,9 +48,8 @@ include("nav/sidebar.php");
               <div class="row ">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                   <div class="card-content">
-                    <h5 class="font-15">Manage All Blogs</h5>
-                    <h2 class="mb-3 font-18"><?php echo $numrows; ?></h2>
-                    <p class="mb-0"><span class="col-green"><a href="blog.php">View All</a></span></p>
+                    <h5 class="font-15">Church Details</h5>
+                    <p class="mb-0"><span class="col-green"><a href="church.php">View All</a></span></p>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -71,9 +69,8 @@ include("nav/sidebar.php");
               <div class="row ">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                   <div class="card-content">
-                    <h5 class="font-15">Manage All Projects</h5>
-                    <h2 class="mb-3 font-18"><?php echo $project_no; ?></h2>
-                    <p class="mb-0"><span class="col-green"><a href="project.php">View All</a></span></p>
+                    <h5 class="font-15">School Details</h5>
+                    <p class="mb-0"><span class="col-green"><a href="school.php">View All</a></span></p>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -93,9 +90,8 @@ include("nav/sidebar.php");
               <div class="row ">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                   <div class="card-content">
-                    <h5 class="font-15">Manage All Users</h5>
-                    <h2 class="mb-3 font-18">1</h2>
-                    <p class="mb-0"><span class="col-green"><a href="member.php">View All</a></span></p>
+                    <h5 class="font-15">Gallery Management</h5>
+                    <p class="mb-0"><span class="col-green"><a href="#">View All</a></span></p>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">

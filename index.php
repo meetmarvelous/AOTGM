@@ -4,8 +4,21 @@ require_once 'include/connect.php';
 $query = mysqli_query($dbcon, "SELECT * FROM site_info");
 $site = mysqli_fetch_array($query);
 if (!$site) {
-	die("error in selecting data from blog database");
+  die("error in selecting data from blog database");
 }
+
+$queryy = mysqli_query($dbcon, "SELECT * FROM church");
+$church = mysqli_fetch_array($queryy);
+if (!$church) {
+  die("error in selecting data from blog database");
+}
+
+$queryyy = mysqli_query($dbcon, "SELECT * FROM school");
+$school = mysqli_fetch_array($queryyy);
+if (!$school) {
+  die("error in selecting data from blog database");
+}
+
 ?>
 
 <!doctype html>
@@ -109,7 +122,7 @@ if (!$site) {
           <div class="col-lg-4 col-md-4">
             <div class="logo">
               <a href="index.php">
-                <img src="images/logo.png" alt="Logo">
+                <img src="images/logo.svg" alt="Logo">
               </a>
             </div>
           </div>
@@ -125,7 +138,7 @@ if (!$site) {
                 </div>
               </div>
               <div class="button float-left">
-                <a href="#" class="main-btn">Apply Now</a>
+                <a href="<?php echo $site['whatsapp_link'] ?>" class="main-btn">Apply Now</a>
               </div>
             </div>
           </div>
@@ -210,8 +223,8 @@ if (!$site) {
               <h1 data-animation="bounceInLeft" data-delay="1s">Grow in faith and fellowship in a place that feels like home.</h1>
               <p data-animation="fadeInUp" data-delay="1.3s">To Evangelize, Teach and Preach the Christian Religion of the Love of God through the Gospel of Jesus Christ.</p>
               <ul>
-                <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="#">Read More</a></li>
-                <li><a data-animation="fadeInUp" data-delay="1.9s" class="main-btn main-btn-2" href="#">Get Started</a>
+                <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="about.php">Read More</a></li>
+                <li><a data-animation="fadeInUp" data-delay="1.9s" class="main-btn main-btn-2" href="about.php">Get Started</a>
                 </li>
               </ul>
             </div>
@@ -228,8 +241,8 @@ if (!$site) {
               <h1 data-animation="bounceInLeft" data-delay="1s">Become part of the Ark of Trinity Gospel Ministry family!</h1>
               <p data-animation="fadeInUp" data-delay="1.3s">Experience spirit-led worship, transformative teachings, and a community rooted in Christ's love.</p>
               <ul>
-                <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="#">Read More</a></li>
-                <li><a data-animation="fadeInUp" data-delay="1.9s" class="main-btn main-btn-2" href="#">Get Started</a>
+                <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="about.php">Read More</a></li>
+                <li><a data-animation="fadeInUp" data-delay="1.9s" class="main-btn main-btn-2" href="about.php">Get Started</a>
                 </li>
               </ul>
             </div>
@@ -246,8 +259,8 @@ if (!$site) {
               <h1 data-animation="bounceInLeft" data-delay="1s">Choose the right place for worship</h1>
               <p data-animation="fadeInUp" data-delay="1.3s">To Evangelize, Teach and Preach the Christian Religion of the Love of God through the Gospel of Jesus Christ. </p>
               <ul>
-                <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="#">Read More</a></li>
-                <li><a data-animation="fadeInUp" data-delay="1.9s" class="main-btn main-btn-2" href="#">Get Started</a>
+                <li><a data-animation="fadeInUp" data-delay="1.6s" class="main-btn" href="about.php">Read More</a></li>
+                <li><a data-animation="fadeInUp" data-delay="1.9s" class="main-btn main-btn-2" href="about.php">Get Started</a>
                 </li>
               </ul>
             </div>
@@ -269,7 +282,8 @@ if (!$site) {
             <h2>Welcome to AOTGM </h2>
           </div> <!-- section title -->
           <div class="about-cont">
-            <p>We serve as a beacon of hope and support, providing charity and welfare to both our congregation and the broader community. Our mission is to demonstrate the love of Christ through acts of kindness, generosity, and compassionate service.</p>
+            <?php echo $church['about']; ?>
+            <!-- <p>We serve as a beacon of hope and support, providing charity and welfare to both our congregation and the broader community. Our mission is to demonstrate the love of Christ through acts of kindness, generosity, and compassionate service.</p> -->
           </div>
         </div> <!-- about cont -->
         <div class="col-lg-7">
@@ -323,14 +337,14 @@ if (!$site) {
             <div class="apply-cont apply-color-1">
               <h3>Join Ark of Trinity Gospel Ministry family!</h3>
               <p>Become part of the Ark of Trinity Gospel Ministry family! Experience spirit-led worship, transformative teachings, and a community rooted in Christ's love. </p>
-              <a href="#" class="main-btn">Join us today!</a>
+              <a href="<?php echo $site['whatsapp_link'] ?>" class="main-btn">Join us today!</a>
             </div> <!-- apply cont -->
           </div>
           <div class="col-lg-6">
             <div class="apply-cont apply-color-2">
               <h3>Apply for ARK OF TRINITY MONTESSORI SCHOOL</h3>
               <p>Join the Ark of Trinity Montessori School today! Empower your child with a solid academic and spiritual foundation for a brighter future. Apply Now!</p>
-              <a href="#" class="main-btn">Apply Now</a>
+              <a href="<?php echo $site['whatsapp_link'] ?>" class="main-btn">Apply Now</a>
             </div> <!-- apply cont -->
           </div>
         </div>
@@ -482,10 +496,10 @@ if (!$site) {
                     THAT WILL BE OUR GUIDE</i>
                 </p>
 
-                <a href="#" class="main-btn">Read More</a>
+                <a href="school.php" class="main-btn">Read More</a>
 
 
-<!-- 
+                <!-- 
                 <h3>2. General School Rules</h3>
 
                 <h4>A. School Days Schedule</h5>
@@ -562,7 +576,7 @@ if (!$site) {
                         session.</li>
                     </ul>
               </div> -->
-              <!-- 
+                <!-- 
               <h3>3. School Fees, Enrollment, and Withdrawal Policy</h3>
 
               <p>All new students are admitted on probation for the first six weeks.</p>
@@ -855,7 +869,7 @@ if (!$site) {
                     correction shall drive it far from him.”</li>
                 </ul>
               </ul> -->
-              <!-- 
+                <!-- 
               <div>
                 <h3>Ark of Trinity G.M Altars and Groups</h3>
 
@@ -929,11 +943,11 @@ if (!$site) {
 
 
 
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   </section>
 
   <!--====== SCHOOL PART ENDS ======-->
@@ -941,6 +955,85 @@ if (!$site) {
   <!--====== carousel PART START ======-->
 
   <section id="event-singel" class="pt-120 pb-120 gray-bg">
+    <div class="container">
+      <div class="events-area">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="eventt events-left">
+              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="images/img1.jpg" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Image 1</h5>
+                      <p>Description for Image 1</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="images/img2.jpg" alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Image 2</h5>
+                      <p>Description for Image 2</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="images/img3.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Image 3</h5>
+                      <p>Description for Image 3</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="images/img4.jpg" alt="Fourth slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Image 4</h5>
+                      <p>Description for Image 4</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="images/img5.jpg" alt="Fifth slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Image 5</h5>
+                      <p>Description for Image 5</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="images/img6.jpg" alt="Sixth slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Image 6</h5>
+                      <p>Description for Image 6</p>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--====== carousel PART ENDS ======-->
+
+  <!--====== carousel PART START ======-->
+
+  <!-- <section id="event-singel" class="pt-120 pb-120 gray-bg">
     <div class="container">
       <div class="events-area">
         <div class="row">
@@ -989,7 +1082,7 @@ if (!$site) {
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!--====== carousel PART ENDS ======-->
 

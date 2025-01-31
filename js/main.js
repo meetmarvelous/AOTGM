@@ -38,7 +38,7 @@ $(function() {
             $(".navigation-3 img").attr("src", "images/logo-2.png");
         } else{
             $(".navigation").addClass("sticky");
-            $(".navigation-3 img").attr("src", "images/logo.png");
+            $(".navigation-3 img").attr("src", "images/logo.svg");
         }
     });
     

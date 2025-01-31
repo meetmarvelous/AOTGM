@@ -4,8 +4,21 @@ require_once 'include/connect.php';
 $query = mysqli_query($dbcon, "SELECT * FROM site_info");
 $site = mysqli_fetch_array($query);
 if (!$site) {
-  die("error in selecting data from blog database");
+	die("error in selecting data from blog database");
 }
+
+$queryy = mysqli_query($dbcon, "SELECT * FROM church");
+$church = mysqli_fetch_array($queryy);
+if (!$church) {
+	die("error in selecting data from blog database");
+}
+
+$queryyy = mysqli_query($dbcon, "SELECT * FROM school");
+$school = mysqli_fetch_array($queryyy);
+if (!$school) {
+	die("error in selecting data from blog database");
+}
+
 ?>
 
 <!doctype html>
@@ -109,7 +122,7 @@ if (!$site) {
           <div class="col-lg-4 col-md-4">
             <div class="logo">
               <a href="index.php">
-                <img src="images/logo.png" alt="Logo">
+                <img src="images/logo.svg" alt="Logo">
               </a>
             </div>
           </div>
@@ -125,7 +138,7 @@ if (!$site) {
                 </div>
               </div>
               <div class="button float-left">
-                <a href="#" class="main-btn">Apply Now</a>
+                <a href="<?php echo $site['whatsapp_link']?>" class="main-btn">Apply Now</a>
               </div>
             </div>
           </div>
@@ -234,7 +247,7 @@ if (!$site) {
               <h2>Keep in touch</h2>
             </div> <!-- section title -->
             <div class="main-form pt-45">
-              <form id="contact-form" action="#" method="post" data-toggle="validator">
+              <form id="contact-form" action="#" method="post">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="singel-form form-group">
@@ -274,7 +287,7 @@ if (!$site) {
                   <p class="form-message"></p>
                   <div class="col-md-12">
                     <div class="singel-form">
-                      <button type="submit" class="main-btn">Send</button>
+                      <button type="" class="main-btn">Send</button>
                     </div> <!-- singel form -->
                   </div>
                 </div> <!-- row -->
