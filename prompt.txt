@@ -1,0 +1,49 @@
+
+
+now the view.php
+
+ convert this to MySQLi Procedural and debug because its not showing the picture when clicked
+
+This is the code for add_picture.php
+
+write the code sure that it move the uploaded file into the pictures folder after it has been saved to database sucessfully
+
+The code :
+.
+.
+ 
+This is the code for add.gallery.php
+Dont do anything to this code. Just take it for future reference
+The code :
+.
+.
+
+This is the code for delete_picture.php
+
+Now rewrite the delete_picture.php so that it also delete a single picture from the folder it was uploaded to
+folder = "../images/pictures/" . $newFileName; 
+
+
+The code :
+
+Now add a condition for this while statemet to count if the images for a particular gallery is more than the first 7 items 
+
+                    <div class="gallery-item" data-image="assets/img/blog/img05.png" data-title="Image 1"></div>
+                    <div class="gallery-item" data-image="assets/img/blog/img08.png" data-title="Image 2"></div>
+                    <div class="gallery-item" data-image="assets/img/blog/img04.png" data-title="Image 3"></div>
+                    <div class="gallery-item" data-image="assets/img/blog/img11.png" data-title="Image 4"></div>
+                    <div class="gallery-item" data-image="../images/pictures/about_banner-1738699013.png" data-title="Image 5"></div>
+                    <div class="gallery-item" data-image="assets/img/blog/img05.png" data-title="Image 6"></div>
+                    <div class="gallery-item" data-image="assets/img/blog/img03.png" data-title="Image 7"></div>
+                    <div class="gallery-item gallery-more" data-image="assets/img/blog/img02.png" data-title="Image 8">
+                      <div>+2</div>
+
+then add a 8th one with that class and count the remaining numbers instead of +2
+
+for this while statement below
+
+                      while ($pic = mysqli_fetch_assoc($result)) {
+                      ?>
+                        <div class="gallery-item" data-image="<?php echo '../images/pictures/' . htmlspecialchars($pic['picture']); ?>" data-title="Image 1"></div>
+                      <?php
+                      }

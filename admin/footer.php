@@ -118,6 +118,7 @@
 <script src="assets/js/page/create-post.js"></script>
 <script src="assets/js/page/datatables.js"></script>
 <script src="assets/js/page/index.js"></script>
+  <script src="assets/js/page/gallery1.js"></script>
 <!-- Template JS File -->
 <script src="assets/js/scripts.js"></script>
 <!-- Custom JS File -->

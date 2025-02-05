@@ -21,6 +21,28 @@ if (!$school) {
 
 ?>
 
+<?php
+if (isset($_POST['change'])) {
+  $name = urlencode(trim($_POST['name']));
+  $email = urlencode(trim($_POST['email']));
+  $subject = urlencode(trim($_POST['subject']));
+  $phone = urlencode(trim($_POST['phone']));
+  $message = urlencode(trim($_POST['message']));
+
+  $whatsapp = $site['phone_no'];
+  $whatsapp_number = preg_replace('/\D/', '', $whatsapp);  // Removes non-digit characters
+  
+  // $whatsapp_number = "2348154755551";
+  $whatsapp_message = "Hello, my name is $name. You can reach me at $email.%0A%0A" .
+    "Subject: $subject%0A%0A$message";
+
+  $whatsapp_url = "https://api.whatsapp.com/send?phone=$whatsapp_number&text=$whatsapp_message";
+
+  header("Location: $whatsapp_url");
+  exit;
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -247,7 +269,8 @@ if (!$school) {
               <h2>Keep in touch</h2>
             </div> <!-- section title -->
             <div class="main-form pt-45">
-              <form id="contact-form" action="#" method="post">
+            <form id="contact-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+              <!-- <form id="contact-form" method="post"> -->
                 <div class="row">
                   <div class="col-md-6">
                     <div class="singel-form form-group">
@@ -279,7 +302,7 @@ if (!$school) {
                   </div>
                   <div class="col-md-12">
                     <div class="singel-form form-group">
-                      <textarea name="messege" placeholder="Messege" data-error="Please,leave us a message."
+                      <textarea name="message" placeholder="Messege" data-error="Please,leave us a message."
                         required="required"></textarea>
                       <div class="help-block with-errors"></div>
                     </div> <!-- singel form -->
@@ -287,7 +310,7 @@ if (!$school) {
                   <p class="form-message"></p>
                   <div class="col-md-12">
                     <div class="singel-form">
-                      <button type="" class="main-btn">Send</button>
+                      <button type="submit" name="change" class="main-btn">Send</button>
                     </div> <!-- singel form -->
                   </div>
                 </div> <!-- row -->
@@ -392,7 +415,7 @@ if (!$school) {
   <script src="js/validator.min.js"></script>
 
   <!--====== Ajax Contact js ======-->
-  <script src="js/ajax-contact.js"></script>
+  <!-- <script src="js/ajax-contact.js"></script> -->
 
   <!--====== Main js ======-->
   <script src="js/main.js"></script>

@@ -34,7 +34,7 @@ $project_no = $rr[0];
   <link rel="stylesheet" href="assets/bundles/summernote/summernote-bs4.css">
   <link rel="stylesheet" href="assets/bundles/trumbowyg/ui/trumbowyg.min.css">
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.19.1/ui/trumbowyg.min.css"> -->
-
+  <link rel="stylesheet" href="assets/bundles/chocolat/dist/css/chocolat.css">
 
   <link rel="stylesheet" href="assets/bundles/datatables/datatables.min.css">
   <link rel="stylesheet" href="assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">

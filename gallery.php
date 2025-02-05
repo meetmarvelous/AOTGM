@@ -19,6 +19,13 @@ if (!$school) {
 	die("error in selecting data from blog database");
 }
 
+// Fetch gallery categories
+$blogcat = mysqli_query($dbcon, "SELECT * FROM gallery");
+if (!$blogcat) {
+  die("Query failed: " . mysqli_error($dbcon));
+}
+$gall = mysqli_fetch_assoc($blogcat);
+$gallery_count = mysqli_num_rows($blogcat);
 ?>
 
 <!doctype html>
@@ -302,187 +309,71 @@ if (!$school) {
 
   <section id="event-page" class="pt-90 pb-120 gray-bg">
     <div class="container">
+    <?php
+            // Fetch up to 6 gallery categories
+            $feat = "SELECT * FROM gallery";
+            $feature = mysqli_query($dbcon, $feat);
 
+            if (!$feature) {
+              die("Query failed: " . mysqli_error($dbcon));
+            }
+
+            while ($featu = mysqli_fetch_array($feature)) {
+            ?>
       <div class="gallery-area mb-3">
         <div class="row">
           <div class="col-lg-12">
-            <h4 class="text-center">Gallery 1 - Just Testing</h>
+            <h4 class="text-center"><?php echo htmlspecialchars($featu['category']); ?></h>
               <div class="gallery-page">
                 <div id="gallery-container">
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
-                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
+                <?php
+                      // Prepare the query to fetch pictures for the current category
+                      $cate = $featu['category'];
+                      $stmt = mysqli_prepare($dbcon, "SELECT * FROM picture WHERE category = ?");
+                      if (!$stmt) {
+                        die("Prepare failed: " . mysqli_error($dbcon));
+                      }
+                      // Bind the parameter
+                      mysqli_stmt_bind_param($stmt, "s", $cate);
+
+                      // Execute the query
+                      mysqli_stmt_execute($stmt);
+
+                      // Get the result
+                      $result = mysqli_stmt_get_result($stmt);
+
+                      if ($result === false) {
+                        die("Execution failed: " . mysqli_error($dbcon));
+                      }
+
+
+                      // Fetch and display each picture
+                      while ($pic = mysqli_fetch_assoc($result)) {
+                     
+                      ?>
+
+                  <a class="lg-item" data-lg-size="1600-1067" data-src="<?php echo './images/pictures/' . htmlspecialchars($pic['picture']); ?>">
+                    <img src="<?php echo './images/pictures/' . htmlspecialchars($pic['picture']); ?>" alt="<?php echo $pic['title']; ?>">
                   </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
-                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/img6.jpg">
-                    <img src="images/img6.jpg" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
-                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
-                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/bg-2.jpg">
-                    <img src="images/bg-2.jpg" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/img2.jpg">
-                    <img src="images/img2.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/favicon.png">
-                    <img src="images/favicon.png" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/page-banner-5.jpg">
-                    <img src="images/page-banner-5.jpg" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
-                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/img4.jpg">
-                    <img src="images/img4.jpg" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/logo old.png">
-                    <img src="images/logo old.png" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
+                  <?php
+                      }
+                      ?>
+
                 </div>
               </div>
           </div>
         </div>
       </div>
 
-      <div class="gallery-area mb-3">
-        <div class="row">
-          <div class="col-lg-12">
-            <h4 class="text-center">Gallery 2 - To be Edited</h>
-              <div class="gallery-page">
-                <div id="gallery-container">
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
-                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
-                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/bg-2.jpg">
-                    <img src="images/bg-2.jpg" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
-                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
-                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/bg-2.jpg">
-                    <img src="images/bg-2.jpg" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/img2.jpg">
-                    <img src="images/img2.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/favicon.png">
-                    <img src="images/favicon.png" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/page-banner-5.jpg">
-                    <img src="images/page-banner-5.jpg" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
-                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/img4.jpg">
-                    <img src="images/img4.jpg" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/logo old.png">
-                    <img src="images/logo old.png" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
+      <?php
+            }
 
-      <div class="gallery-area mb-3">
-        <div class="row">
-          <div class="col-lg-12">
-            <h4 class="text-center">Gallery 3 - Just A Test</h>
-              <div class="gallery-page">
-                <div id="gallery-container">
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
-                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
-                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/bg-2.jpg">
-                    <img src="images/bg-2.jpg" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
-                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/flyer2.jpg">
-                    <img src="images/flyer2.jpg" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/bg-2.jpg">
-                    <img src="images/bg-2.jpg" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/img2.jpg">
-                    <img src="images/img2.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/favicon.png">
-                    <img src="images/favicon.png" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/page-banner-5.jpg">
-                    <img src="images/page-banner-5.jpg" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="images/flyer.jpg">
-                    <img src="images/flyer.jpg" alt="Boat on Calm Water">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2400" data-src="images/img4.jpg">
-                    <img src="images/img4.jpg" alt="Wintry Mountain Landscape">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-2398" data-src="images/logo old.png">
-                    <img src="images/logo old.png" alt="Mountains in the Clouds">
-                  </a>
-                  <a class="lg-item" data-lg-size="1600-1065" data-src="images/bg-3.jpg">
-                    <img src="images/bg-3.jpg" alt="Boat on Calm Water">
-                  </a>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
+            // Close the statement
+            mysqli_stmt_close($stmt);
+            ?>
+
+
+      <!-- <div class="row">
         <div class="col-lg-12">
           <nav class="courses-pagination mt-50">
             <ul class="pagination justify-content-center">
@@ -500,9 +391,9 @@ if (!$school) {
                 </a>
               </li>
             </ul>
-          </nav> <!-- courses pagination -->
+          </nav> 
         </div>
-      </div> <!-- row -->
+      </div>  -->
 
     </div> <!-- container -->
 

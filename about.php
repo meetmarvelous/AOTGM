@@ -4,19 +4,19 @@ require_once 'include/connect.php';
 $query = mysqli_query($dbcon, "SELECT * FROM site_info");
 $site = mysqli_fetch_array($query);
 if (!$site) {
-	die("error in selecting data from blog database");
+  die("error in selecting data from blog database");
 }
 
 $queryy = mysqli_query($dbcon, "SELECT * FROM church");
 $church = mysqli_fetch_array($queryy);
 if (!$church) {
-	die("error in selecting data from blog database");
+  die("error in selecting data from blog database");
 }
 
 $queryyy = mysqli_query($dbcon, "SELECT * FROM school");
 $school = mysqli_fetch_array($queryyy);
 if (!$school) {
-	die("error in selecting data from blog database");
+  die("error in selecting data from blog database");
 }
 
 ?>
@@ -138,7 +138,7 @@ if (!$school) {
                 </div>
               </div>
               <div class="button float-left">
-                <a href="<?php echo $site['whatsapp_link']?>" class="main-btn">Apply Now</a>
+                <a href="<?php echo $site['whatsapp_link'] ?>" class="main-btn">Apply Now</a>
               </div>
             </div>
           </div>
@@ -248,7 +248,7 @@ if (!$school) {
 
           </div> <!-- section title -->
           <div class="about-cont">
-          <?php echo $church['about']; ?>
+            <?php echo $church['about']; ?>
             <!-- <p>
               We serve as a beacon of hope and support, providing charity and welfare to both our congregation and the broader community. Our mission is to demonstrate the love of Christ through acts of kindness, generosity, and compassionate service.
             </p> -->
@@ -268,52 +268,183 @@ if (!$school) {
   <!--====== ABOUT PART ENDS ======-->
 
 
-    <!--====== carousel PART START ======-->
+  <!--====== COUNTER PART START ======-->
+   
 
-    <section id="event-singel" class="pt-120 pb-120 gray-bg">
-      <div class="container">
-        <div class="events-area">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="eventt events-left">
-  
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                  </ol>
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img class="d-block w-100" src="images/flyer.jpg" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="images/flyer2.jpg" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="images/flyer.jpg" alt="Third slide">
-                    </div>
-                    </div>
-                  </div>
-                  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </div>
-  
-  
+
+
+
+
+ 
+
+  <div id="counter-part" class="bg_cover pt-40 pb-110" data-overlay="8" style="background-image: url(images/cbanner.png)">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-sm-6">
+          <div class="singel-counter text-center mt-40">
+            <span class="">Transformative</span>
+            <p>Lives Impacted</p>
+          </div> <!-- singel counter -->
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="singel-counter text-center mt-40">
+            <span class="">Spirit-Led</span>
+            <p> Worship Experiences</p>
+          </div> <!-- singel counter -->
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="singel-counter text-center mt-40">
+            <span class="">Faith-Filled</span>
+            <p> Evangelism Outreach</p>
+          </div> <!-- singel counter -->
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="singel-counter text-center mt-40">
+            <span class="">Compassionate</span>
+            <p>Community Support</p>
+          </div> <!-- singel counter -->
+        </div>
+      </div> <!-- row -->
+    </div> <!-- container -->
+  </div>
+
+  <!--====== COUNTER PART ENDS ======-->
+
+  <!--====== SCHOOL PART START ======-->
+
+  <section id="event-singel" class="pt-120 pb-120 gray-bg">
+    <div class="container">
+      <div class="events-area">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="eventt events-left">
+
+              <div>
+                <h3>Our Aims and Objectives</h3>
+                <p>The aims and objectives of the association are:</p>
+                <ul>
+                  <li>To preach the word of God, through the gospel of Jesus Christ, to touch and convert unbelievers and lost souls
+                    in all parts of the world.</li>
+                  <li>To raise a spirit-filled and word-based people that will offer true quality worship unto God in celebration of
+                    their redemption.</li>
+                  <li>To mobilize God's people with a burning desire for soul-winning and nurturing the converted through evangelism
+                    and mission outreaches.</li>
+                  <li>To raise the Christian believer with the heart for service in the church of Jesus Christ.</li>
+                  <li>To pursue divine and noble transformation of lives via Bible-based preaching and teaching.</li>
+                  <li>To assist the needy, aged, widows, and the vulnerable in society.</li>
+                  <li>To discourage child abuse and juvenile delinquencies in society.</li>
+                  <li>To steadily inculcate Bible seeds for honesty, integrity, and nobility.</li>
+                  <li>To promote female and male empowerment towards developing and maximizing their potentials.</li>
+                  <li>To embark on community development through encouraging collective actions of community people to generate
+                    solutions to their common problems and by executing projects for the rural communities in their areas of need.
+                  </li>
+                  <li>To educate community people on capacity building, self-improvement, economy development, and empowerment, and to
+                    engage the people in such activities towards helping them maximize their potentials.</li>
+                  <li>To promote peaceful coexistence among community people.</li>
+                  <li>To promote adherence to the rule of law and respect for human rights.</li>
+                  <li>To pursue humanitarian service, evangelism, Christian congregational services.</li>
+                  <li>To establish educational institutions and trusts.</li>
+                </ul>
               </div>
+
+              <div>
+                <h3>Ark of Trinity G.M Altars and Groups</h3>
+
+                <h4>AOTGM - HQ Church</h4>
+                <p>(a.k.a Throne of Mercy, Seat of Grace)</p>
+
+                <h4>Ibesikpo Branch</h4>
+                <p>(a.k.a The Beautiful City on the Hill)</p>
+
+                <h4>Nsit Atai Branch</h4>
+                <p>(a.k.a My Rehoboth - Place of my Expansion)</p>
+
+                <h4>Afaha Akai Branch</h4>
+                <p>(a.k.a Place of my Establishment)</p>
+
+                <h4>Nwaniba Branch</h4>
+                <p>(a.k.a Gate of my Encounter)</p>
+
+                <h4>Afaha Nsit Branch</h4>
+                <p>(a.k.a O! God of Revelation)</p>
+
+                <h4>Ifiayong Branch</h4>
+                <p>(a.k.a Place of my Turnaround)</p>
+
+                <h4>Daughters of Zion</h4>
+                <p>(a.k.a My Jewel)</p>
+
+                <h4>Youths for Christ</h4>
+                <p>(a.k.a We are Moving Forward)</p>
+
+                <h4>Children of Destiny</h4>
+                <p>(a.k.a "We are for Signs & Wonders")</p>
+
+                <h4>Men Fellowship</h4>
+                <p>(a.k.a "Strength of my Loin")</p>
+
+                <h4>Youth Fellowship</h4>
+                <p>(a.k.a "We are Moving Forward")</p>
+
+                <h4>AOTGM Choir</h4>
+                <p>(a.k.a "Praise Be")</p>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
-    </section>
-  
-    <!--====== carousel PART ENDS ======-->
+    </div>
+  </section>
+
+  <!--====== SCHOOL PART ENDS ======-->
+
+  <!--====== carousel PART START ======-->
+
+  <section id="event-singel" class="pt-40 pb-40">
+    <div class="container">
+      <div class="events-area">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="eventt events-left">
+
+              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="images/flyer.jpg" alt="First slide">
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="images/flyer2.jpg" alt="Second slide">
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="images/flyer.jpg" alt="Third slide">
+                  </div>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!--====== carousel PART ENDS ======-->
 
   <!--====== PATNAR LOGO PART START ======-->
 
@@ -342,12 +473,12 @@ if (!$school) {
         </div>
         <div class="col-lg-12">
           <div class="singel-patnar text-center mt-40">
-            <img src="images/patnar-logo/p-2.png" alt="Logo">
+            <img src="images/patnar-logo/p-1.png" alt="Logo">
           </div>
         </div>
         <div class="col-lg-12">
           <div class="singel-patnar text-center mt-40">
-            <img src="images/patnar-logo/p-3.png" alt="Logo">
+            <img src="images/patnar-logo/p-2.png" alt="Logo">
           </div>
         </div>
       </div> <!-- row -->
