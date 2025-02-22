@@ -192,6 +192,9 @@ if (isset($_POST['change'])) {
                     <a href="school.php">Our School</a>
                   </li>
                   <li class="nav-item">
+                    <a href="charity.php">Charity</a>
+                  </li>
+                  <li class="nav-item">
                     <a href="gallery.php">Our Gallery</a>
                   </li>
                   <li class="nav-item">

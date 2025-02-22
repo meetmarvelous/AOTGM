@@ -4,28 +4,21 @@ require_once 'include/connect.php';
 $query = mysqli_query($dbcon, "SELECT * FROM site_info");
 $site = mysqli_fetch_array($query);
 if (!$site) {
-	die("error in selecting data from blog database");
+  die("error in selecting data from blog database");
 }
 
 $queryy = mysqli_query($dbcon, "SELECT * FROM church");
 $church = mysqli_fetch_array($queryy);
 if (!$church) {
-	die("error in selecting data from blog database");
+  die("error in selecting data from blog database");
 }
 
 $queryyy = mysqli_query($dbcon, "SELECT * FROM school");
 $school = mysqli_fetch_array($queryyy);
 if (!$school) {
-	die("error in selecting data from blog database");
+  die("error in selecting data from blog database");
 }
 
-// Fetch gallery categories
-$blogcat = mysqli_query($dbcon, "SELECT * FROM gallery");
-if (!$blogcat) {
-  die("Query failed: " . mysqli_error($dbcon));
-}
-$gall = mysqli_fetch_assoc($blogcat);
-$gallery_count = mysqli_num_rows($blogcat);
 ?>
 
 <!doctype html>
@@ -75,70 +68,7 @@ $gallery_count = mysqli_num_rows($blogcat);
   <!--====== Responsive css ======-->
   <link rel="stylesheet" href="css/responsive.css">
 
-  <!-- LightGallery CSS CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
-  <!-- Custom Styling -->
-  <style>
-    .gallery-page {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-    }
-
-    #gallery-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      padding: 20px;
-    }
-
-    #gallery-container a {
-      display: block;
-      overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    #gallery-container a:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    #gallery-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    #gallery-container a:hover img {
-      transform: scale(1.1);
-    }
-
-    @media (max-width: 600px) {
-      #gallery-container {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 10px;
-      }
-    }
-
-    .gallery-area {
-      background-color: #fff;
-      padding: 10px;
-    }
-
-    /* @media (prefers-color-scheme: dark) {
-      div.gallery-page {
-        background-color: #121212;
-        color: #ffffff;
-      }
-
-      #gallery-container a {
-        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-      }
-    } */
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
 
 </head>
 
@@ -208,7 +138,7 @@ $gallery_count = mysqli_num_rows($blogcat);
                 </div>
               </div>
               <div class="button float-left">
-                <a href="<?php echo $site['whatsapp_link']?>" class="main-btn">Apply Now</a>
+                <a href="<?php echo $site['whatsapp_link'] ?>" class="main-btn">Apply Now</a>
               </div>
             </div>
           </div>
@@ -240,10 +170,10 @@ $gallery_count = mysqli_num_rows($blogcat);
                     <a href="school.php">Our School</a>
                   </li>
                   <li class="nav-item">
-                    <a href="charity.php">Charity</a>
+                    <a class="active" href="charity.php">Charity</a>
                   </li>
                   <li class="nav-item">
-                    <a class="active" href="gallery.php">Our Gallery</a>
+                    <a href="gallery.php">Our Gallery</a>
                   </li>
                   <li class="nav-item">
                     <a href="contact.php">Contact</a>
@@ -288,16 +218,16 @@ $gallery_count = mysqli_num_rows($blogcat);
   <!--====== PAGE BANNER PART START ======-->
 
   <section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8"
-    style="background-image: url(images/page-banner-3.jpg)">
+    style="background-image: url(images/chbanner.png)">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="page-banner-cont">
-            <h2>Our Gallery</h2>
+            <h2>About AOTGM Charity Foundation</h2>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+                <li class="breadcrumb-item active" aria-current="page">Our Charity Foundation</li>
               </ol>
             </nav>
           </div> <!-- page banner cont -->
@@ -308,101 +238,163 @@ $gallery_count = mysqli_num_rows($blogcat);
 
   <!--====== PAGE BANNER PART ENDS ======-->
 
-  <!--====== EVENTS PART START ======-->
+  <!--====== ABOUT PART START ======-->
 
-  <section id="event-page" class="pt-90 pb-120 gray-bg">
+  <section id="about-page" class="pt-70 pb-110">
     <div class="container">
-    <?php
-            // Fetch up to 6 gallery categories
-            $feat = "SELECT * FROM gallery";
-            $feature = mysqli_query($dbcon, $feat);
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="section-title mt-50">
+            <h5>About Our Charity Foundation</h5>
+            <h2>AOTGM Charity Foundation</h2>
 
-            if (!$feature) {
-              die("Query failed: " . mysqli_error($dbcon));
-            }
-
-            while ($featu = mysqli_fetch_array($feature)) {
-            ?>
-      <div class="gallery-area mb-3">
+          </div> <!-- section title -->
+          <div class="about-cont">
+            <p>
+              AOTGM Charity Foundation began as a charity outreach within the church ministry in 2010. The church started as a family worship Chapel in 2008 and was founded by Rev. Dr (Mrs) Victoria Onofiok Kinlock. In 2021, the Church, along with the Charity Foundation, was legally incorporated under CAC.
+            </p>
+          </div>
+        </div> <!-- about cont -->
+        <div class="col-lg-7">
+          <div class="about-image mt-50">
+            <img src="images/charity.png" alt="About">
+          </div> <!-- about imag -->
+        </div>
+      </div> <!-- row -->
+      <div class="events-area">
         <div class="row">
           <div class="col-lg-12">
-            <h4 class="text-center"><?php echo htmlspecialchars($featu['category']); ?></h>
-              <div class="gallery-page">
-                <div id="gallery-container">
-                <?php
-                      // Prepare the query to fetch pictures for the current category
-                      $cate = $featu['category'];
-                      $stmt = mysqli_prepare($dbcon, "SELECT * FROM picture WHERE category = ?");
-                      if (!$stmt) {
-                        die("Prepare failed: " . mysqli_error($dbcon));
-                      }
-                      // Bind the parameter
-                      mysqli_stmt_bind_param($stmt, "s", $cate);
+            <div class="eventt events-left">
+              <div>
+                <h2>AOTGM Charity Foundation</h2>
+                <p>AOTGM Charity Foundation began as a charity outreach within the church ministry in 2010. The church started as a family worship Chapel in 2008 and was founded by Rev. Dr (Mrs) Victoria Onofiok Kinlock. In 2021, the Church, along with the Charity Foundation, was legally incorporated under CAC.</p>
 
-                      // Execute the query
-                      mysqli_stmt_execute($stmt);
+                <p>AOTGM Charity Foundation is established on the Christian ethos of Almsgiving, Welfare, and Prayer offering for the poor, destitute, and needy. AOTGM Charity Foundation undertakes monthly distribution of food, clothes, and funds to orphanages and destitute homes in Akwa Ibom State. The welfare unit takes care of widows, poor families, and those in need.</p>
 
-                      // Get the result
-                      $result = mysqli_stmt_get_result($stmt);
+                <h4>Empowerment Programs</h4>
+                <p>The foundation empowers numerous groups of people as follows:</p>
+                <ul>
+                  <li>Giving soft loans for start-up and reviving existing SMEs businesses,</li>
+                  <li>Employment opportunities in the founder's Conglomerate of companies,</li>
+                  <li>Educational grants and scholarships to youths,</li>
+                  <li>Medical care through hospitals,</li>
+                  <li>General financial help for the well-being of people, etc.</li>
+                </ul>
 
-                      if ($result === false) {
-                        die("Execution failed: " . mysqli_error($dbcon));
-                      }
+                <h4>Financial Support and Partnerships</h4>
+                <p>AOTGM Charity Foundation is financially supported by the founder's Conglomerate of Companies. We partner with the following establishments:</p>
+                <ol>
+                  <li>Saint Charles Walker Orphanage Home, Nwaniba Road, Uyo</li>
+                  <li>Saint Anthony of Padua Destitute Home, Uruan Street, Uyo</li>
+                  <li>Bishop Elijah Mboho Orphanage Home, Gospel Village, Abak</li>
+                  <li>Government of Akwa Ibom State Special Children Center, IBB, Uyo</li>
+                  <li>Friends of the Needy Orphanage Home, Okobo</li>
+                  <li>God's Liberty Orphanage Home, Oron</li>
+                </ol>
 
-
-                      // Fetch and display each picture
-                      while ($pic = mysqli_fetch_assoc($result)) {
-                     
-                      ?>
-
-                  <a class="lg-item" data-lg-size="1600-1067" data-src="<?php echo './images/pictures/' . htmlspecialchars($pic['picture']); ?>">
-                    <img src="<?php echo './images/pictures/' . htmlspecialchars($pic['picture']); ?>" alt="<?php echo $pic['title']; ?>">
-                  </a>
-                  <?php
-                      }
-                      ?>
-
-                </div>
+                <p>Come partner with us to uplift humanity and ameliorate the welfare of the poor and disadvantaged in our society.</p>
               </div>
+
+
+
+            </div>
           </div>
         </div>
       </div>
-
-      <?php
-            }
-
-            // Close the statement
-            mysqli_stmt_close($stmt);
-            ?>
-
-
-      <!-- <div class="row">
-        <div class="col-lg-12">
-          <nav class="courses-pagination mt-50">
-            <ul class="pagination justify-content-center">
-              <li class="page-item">
-                <a href="#" aria-label="Previous">
-                  <i class="fa fa-angle-left"></i>
-                </a>
-              </li>
-              <li class="page-item"><a class="active" href="#">1</a></li>
-              <li class="page-item"><a href="#">2</a></li>
-              <li class="page-item"><a href="#">3</a></li>
-              <li class="page-item">
-                <a href="#" aria-label="Next">
-                  <i class="fa fa-angle-right"></i>
-                </a>
-              </li>
-            </ul>
-          </nav> 
-        </div>
-      </div>  -->
-
     </div> <!-- container -->
-
   </section>
 
-  <!--====== EVENTS PART ENDS ======-->
+  <!--====== ABOUT PART ENDS ======-->
+
+  <!--====== SCHOOL PART START ======-->
+
+  <section id="event-singel" class="pt-10 pb-10 gray-bg">
+    <div class="container">
+      <div class="events-area">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="eventt events-left">
+              <div>
+                <h2>AOTGM Charity Foundation</h2>
+                <p>AOTGM Charity Foundation began as a charity outreach within the church ministry in 2010. The church started as a family worship Chapel in 2008 and was founded by Rev. Dr (Mrs) Victoria Onofiok Kinlock. In 2021, the Church, along with the Charity Foundation, was legally incorporated under CAC.</p>
+
+                <p>AOTGM Charity Foundation is established on the Christian ethos of Almsgiving, Welfare, and Prayer offering for the poor, destitute, and needy. AOTGM Charity Foundation undertakes monthly distribution of food, clothes, and funds to orphanages and destitute homes in Akwa Ibom State. The welfare unit takes care of widows, poor families, and those in need.</p>
+
+                <h4>Empowerment Programs</h4>
+                <p>The foundation empowers numerous groups of people as follows:</p>
+                <ul>
+                  <li>Giving soft loans for start-up and reviving existing SMEs businesses,</li>
+                  <li>Employment opportunities in the founder's Conglomerate of companies,</li>
+                  <li>Educational grants and scholarships to youths,</li>
+                  <li>Medical care through hospitals,</li>
+                  <li>General financial help for the well-being of people, etc.</li>
+                </ul>
+
+                <h4>Financial Support and Partnerships</h4>
+                <p>AOTGM Charity Foundation is financially supported by the founder's Conglomerate of Companies. We partner with the following establishments:</p>
+                <ol>
+                  <li>Saint Charles Walker Orphanage Home, Nwaniba Road, Uyo</li>
+                  <li>Saint Anthony of Padua Destitute Home, Uruan Street, Uyo</li>
+                  <li>Bishop Elijah Mboho Orphanage Home, Gospel Village, Abak</li>
+                  <li>Government of Akwa Ibom State Special Children Center, IBB, Uyo</li>
+                  <li>Friends of the Needy Orphanage Home, Okobo</li>
+                  <li>God's Liberty Orphanage Home, Oron</li>
+                </ol>
+
+                <p>Come partner with us to uplift humanity and ameliorate the welfare of the poor and disadvantaged in our society.</p>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--====== SCHOOL PART ENDS ======-->
+
+  <!--====== PATNAR LOGO PART START ======-->
+
+  <div id="patnar-logo" class="pt-40 pb-80 gray-bg">
+    <div class="container">
+      <div class="row patnar-slied">
+        <div class="col-lg-12">
+          <div class="singel-patnar text-center mt-40">
+            <img src="images/patnar-logo/p-1.png" alt="Logo">
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="singel-patnar text-center mt-40">
+            <img src="images/patnar-logo/p-2.png" alt="Logo">
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="singel-patnar text-center mt-40">
+            <img src="images/patnar-logo/p-3.png" alt="Logo">
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="singel-patnar text-center mt-40">
+            <img src="images/patnar-logo/p-4.png" alt="Logo">
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="singel-patnar text-center mt-40">
+            <img src="images/patnar-logo/p-2.png" alt="Logo">
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="singel-patnar text-center mt-40">
+            <img src="images/patnar-logo/p-3.png" alt="Logo">
+          </div>
+        </div>
+      </div> <!-- row -->
+    </div> <!-- container -->
+  </div>
+
+  <!--====== PATNAR LOGO PART ENDS ======-->
 
   <!--====== FOOTER PART START ======-->
 
@@ -412,30 +404,20 @@ $gallery_count = mysqli_num_rows($blogcat);
 
   <!--====== FOOTER PART ENDS ======-->
 
-  <!--====== BACK TO TP PART START ======-->
+  <!--====== BACK TO TOP PART START ======-->
 
   <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 
-  <!--====== BACK TO TP PART ENDS ======-->
+  <!--====== BACK TO TOP PART ENDS ======-->
 
 
-  <!-- LightGallery JS CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
 
-  <script>
-    const container = document.querySelector('#gallery-container');
-    lightGallery(container, {
-      selector: '.lg-item',
-      plugins: [lgZoom, lgThumbnail],
-      mobileSettings: {
-        showCloseIcon: true,
-        zoom: true,
-        thumbnail: true
-      }
-    });
-  </script>
+
+
+
+
+
+
 
   <!--====== jquery js ======-->
   <script src="js/vendor/modernizr-3.6.0.min.js"></script>

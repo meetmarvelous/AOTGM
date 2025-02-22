@@ -33,9 +33,9 @@
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Gallery Management</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="#">Add New Pictures</a></li>
-                <li><a class="nav-link" href="#">All Pcitures</a></li>
-                <li><a class="nav-link" href="#">Add Gallery Category</a></li>
+                <li><a class="nav-link" href="add_picture.php">Add New Pictures</a></li>
+                <li><a class="nav-link" href="picture.php">All Pcitures</a></li>
+                <li><a class="nav-link" href="add_gallery.php">Add Gallery Category</a></li>
               </ul>
             </li>
 

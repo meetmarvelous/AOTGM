@@ -170,6 +170,9 @@ if (!$school) {
                     <a href="school.php">Our School</a>
                   </li>
                   <li class="nav-item">
+                    <a href="charity.php">Charity</a>
+                  </li>
+                  <li class="nav-item">
                     <a href="gallery.php">Our Gallery</a>
                   </li>
                   <li class="nav-item">
@@ -397,7 +400,6 @@ if (!$school) {
         <div class="row">
           <div class="col-lg-12">
             <div class="eventt events-left">
-              <h2>SCHOOL HANDBOOK</h2>
               <h2>Ark of Trinity GM Montessori School (AOTGMMS)</h2>
 
               <div>
@@ -418,12 +420,12 @@ if (!$school) {
               </div>
 
               <div>
-                <h4>B. Our Vision</h4>
+                <h3>2. Our Vision</h3>
                 <p>We seek to graduate children that are wholesome, scholarly, skilled, and confident.</p>
               </div>
 
               <div>
-                <h4>C. Our Mission</h4>
+                <h3>3. Our Mission</h3>
                 <p>Our benefits include:</p>
                 <ul>
                   <li>Christian faith-based environment and learning</li>
@@ -439,7 +441,7 @@ if (!$school) {
               </div>
 
               <div>
-                <h4>D. Core Values</h4>
+                <h3>4. Core Values</h3>
                 <p>
                   This School is dedicated to the training of children in programs of study, activity, and a lifestyle
                   that is Bible-centered. Students are trained to adhere to the School’s philosophy and Biblical-based
@@ -454,7 +456,7 @@ if (!$school) {
               </div>
 
               <div>
-                <h4>E. School Motto</h4>
+                <h3>5. School Motto</h3>
                 <p><strong>Knowledge. Discipline & Charity</strong></p>
 
                 <h5>Knowledge</h5>
@@ -477,7 +479,7 @@ if (!$school) {
                   our ventures have these bases. We will teach these values to the children, so that the world will be a
                   better place.</p>
 
-                <h4>F. School Anthem & Pledge</h4>
+                <h3>6. School Anthem & Pledge</h3>
                 <p><i>1. OUR DEAR AOTGM MONTESSORI SCHOOL<br>
                     OUR HEARTS AND TONGUES ARE FILLED UP<br>
                     WITH PRAISES AND THANKS<br>
@@ -497,36 +499,6 @@ if (!$school) {
                 </p>
 
                 <a href="school.php" class="main-btn">Read More</a>
-
-              <div>
-                <h3>AOTGM Awards on Wednesday</h3>
-                <h4>18 December 2024</h4>
-                <ul>
-                  <li>Best Choir:
-                    <ul>
-                      <li>Best Children Choir</li>
-                      <li>Best Youth Choir</li>
-                      <li>Best Adult Choir</li>
-                    </ul>
-                  </li>
-                  <li>Best Coordinated Assembly</li>
-                  <li>Best Women Fellowship Group</li>
-                  <li>Best Men Fellowship Group</li>
-                  <li>Best Branch Pastor in the Ministry</li>
-                  <li>2nd Best Pastor in the Ministry</li>
-                  <li>Fastest Consistently Growing Assembly</li>
-                  <li>Most Proactive - Best Ever Ready Work Group</li>
-                  <li>Most Fire Zeal Assembly</li>
-                  <li>Best Spiritual Church: Ibesikpo</li>
-                  <li>Best Administration Team</li>
-                  <li>Best All Round Performing Minister</li>
-                  <li>G.O's Support Team</li>
-                  <li>G.O and Ministry Trusted Backers</li>
-                  <li>Logistics Support Team</li>
-                </ul>
-              </div> 
-
-
 
               </div>
             </div>
