@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Media Gallery</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #94a3b8;
+      --gray-light: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f1f5f9;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .gallery-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--primary), #3a0ca3);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .gallery-subtitle {
+      font-size: 1.1rem;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .filter-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.6rem 1.2rem;
+      background: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      color: var(--gray);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem 0;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      background: white;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .gallery-media {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover .gallery-media {
+      transform: scale(1.05);
+    }
+
+    .media-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+      color: white;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover .media-info {
+      opacity: 1;
+    }
+
+    .media-type {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .video-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(5px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover .video-icon {
+      opacity: 1;
+    }
+
+    .loading-spinner {
+      display: none;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(0,0,0,0.1);
+      border-radius: 50%;
+      border-top-color: var(--primary);
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Lightbox styles */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .lightbox-media {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    .lightbox-video {
+      width: 800px;
+      max-width: 90%;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 1rem;
+    }
+
+    .lightbox-prev, .lightbox-next {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .lightbox-prev:hover, .lightbox-next:hover {
+      background: var(--primary);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+      
+      .gallery-title {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .filter-controls {
+        gap: 0.5rem;
+      }
+      
+      .filter-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="gallery-header">
+      <h1 class="gallery-title">Media Gallery</h1>
+      <p class="gallery-subtitle">Explore our collection of high-quality images and videos</p>
+    </header>
+
+    <div class="filter-controls">
+      <button class="filter-btn active" data-filter="all">All Media</button>
+      <button class="filter-btn" data-filter="image">Images</button>
+      <button class="filter-btn" data-filter="video">Videos</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Gallery items will be inserted here by JavaScript -->
+    </div>
+
+    <div class="loading-spinner" id="loadingSpinner">
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="lightbox-content" id="lightboxContent">
+      <!-- Content will be inserted here -->
+    </div>
+    <div class="lightbox-nav">
+      <button class="lightbox-prev" id="lightboxPrev">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="lightbox-next" id="lightboxNext">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Sample media data (in a real app, this would come from an API)
+      const mediaData = [
+        {
+          id: 1,
+          type: 'image',
+          url: 'https://source.unsplash.com/random/800x800/?nature',
+          thumbnail: 'https://source.unsplash.com/random/400x400/?nature',
+          title: 'Beautiful Landscape',
+          description: 'Scenic view of mountains at sunset'
+        },
+        {
+          id: 2,
+          type: 'image',
+          url: 'https://source.unsplash.com/random/800x800/?city',
+          thumbnail: 'https://source.unsplash.com/random/400x400/?city',
+          title: 'Urban Skyline',
+          description: 'Cityscape with modern architecture'
+        },
+        {
+          id: 3,
+          type: 'video',
+          url: 'https://assets.mixkit.co/videos/preview/mixkit-tree-with-yellow-flowers-1173-large.mp4',
+          thumbnail: 'https://i.ytimg.com/vi/7ZmJtYaUTa0/maxresdefault.jpg',
+          title: 'Nature Documentary',
+          description: 'Close-up of flowers in the wind'
+        },
+        {
+          id: 4,
+          type: 'image',
+          url: 'https://source.unsplash.com/random/800x800/?beach',
+          thumbnail: 'https://source.unsplash.com/random/400x400/?beach',
+          title: 'Tropical Beach',
+          description: 'White sand and crystal clear water'
+        },
+        {
+          id: 5,
+          type: 'video',
+          url: 'https://assets.mixkit.co/videos/preview/mixkit-woman-feeding-a-white-horse-1176-large.mp4',
+          thumbnail: 'https://i.ytimg.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg',
+          title: 'Horse Feeding',
+          description: 'Gentle interaction with animals'
+        },
+        {
+          id: 6,
+          type: 'image',
+          url: 'https://source.unsplash.com/random/800x800/?mountain',
+          thumbnail: 'https://source.unsplash.com/random/400x400/?mountain',
+          title: 'Snowy Peaks',
+          description: 'Majestic mountain range'
+        },
+        {
+          id: 7,
+          type: 'video',
+          url: 'https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4',
+          thumbnail: 'https://i.ytimg.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg',
+          title: 'Ocean Waves',
+          description: 'Calming waves crashing on shore'
+        },
+        {
+          id: 8,
+          type: 'image',
+          url: 'https://source.unsplash.com/random/800x800/?forest',
+          thumbnail: 'https://source.unsplash.com/random/400x400/?forest',
+          title: 'Dense Forest',
+          description: 'Sunlight filtering through trees'
+        }
+      ];
+
+      // DOM elements
+      const galleryGrid = document.getElementById('galleryGrid');
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const loadingSpinner = document.getElementById('loadingSpinner');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxContent = document.getElementById('lightboxContent');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const lightboxPrev = document.getElementById('lightboxPrev');
+      const lightboxNext = document.getElementById('lightboxNext');
+
+      // Current state
+      let currentMedia = [];
+      let currentIndex = 0;
+      let activeFilter = 'all';
+
+      // Initialize the gallery
+      function initGallery() {
+        renderGallery(mediaData);
+        setupEventListeners();
+      }
+
+      // Render gallery items
+      function renderGallery(mediaItems) {
+        galleryGrid.innerHTML = '';
+        currentMedia = mediaItems;
+        
+        mediaItems.forEach((item, index) => {
+          const galleryItem = document.createElement('div');
+          galleryItem.className = `gallery-item ${item.type}`;
+          galleryItem.dataset.index = index;
+          
+          let mediaElement;
+          if (item.type === 'video') {
+            mediaElement = document.createElement('video');
+            mediaElement.src = item.thumbnail;
+            mediaElement.muted = true;
+            mediaElement.playsInline = true;
+            galleryItem.innerHTML += `
+              <div class="video-icon">
+                <i class="fas fa-play"></i>
+              </div>
+            `;
+          } else {
+            mediaElement = document.createElement('img');
+            mediaElement.src = item.thumbnail;
+            mediaElement.alt = item.title;
+          }
+          
+          mediaElement.className = 'gallery-media';
+          
+          galleryItem.innerHTML += `
+            ${mediaElement.outerHTML}
+            <div class="media-info">
+              <h3>${item.title}</h3>
+              <p>${item.description}</p>
+            </div>
+            <div class="media-type">
+              <i class="fas fa-${item.type === 'video' ? 'play' : 'image'}"></i>
+              <span>${item.type === 'video' ? 'Video' : 'Image'}</span>
+            </div>
+          `;
+          
+          galleryGrid.appendChild(galleryItem);
+        });
+      }
+
+      // Filter gallery items
+      function filterGallery(filter) {
+        activeFilter = filter;
+        filterButtons.forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.filter === filter);
+        });
+        
+        if (filter === 'all') {
+          renderGallery(mediaData);
+          return;
+        }
+        
+        const filteredItems = mediaData.filter(item => item.type === filter);
+        renderGallery(filteredItems);
+      }
+
+      // Show loading spinner
+      function showLoading(show) {
+        loadingSpinner.style.display = show ? 'flex' : 'none';
+      }
+
+      // Open lightbox
+      function openLightbox(index) {
+        currentIndex = index;
+        const item = currentMedia[index];
+        
+        lightboxContent.innerHTML = '';
+        
+        if (item.type === 'video') {
+          const video = document.createElement('video');
+          video.src = item.url;
+          video.controls = true;
+          video.autoplay = true;
+          video.className = 'lightbox-media lightbox-video';
+          lightboxContent.appendChild(video);
+        } else {
+          const img = document.createElement('img');
+          img.src = item.url;
+          img.alt = item.title;
+          img.className = 'lightbox-media';
+          lightboxContent.appendChild(img);
+        }
+        
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      // Close lightbox
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Pause any videos when closing
+        const videos = lightboxContent.querySelectorAll('video');
+        videos.forEach(video => video.pause());
+      }
+
+      // Navigate lightbox
+      function navigateLightbox(direction) {
+        if (direction === 'prev') {
+          currentIndex = (currentIndex - 1 + currentMedia.length) % currentMedia.length;
+        } else {
+          currentIndex = (currentIndex + 1) % currentMedia.length;
+        }
+        openLightbox(currentIndex);
+      }
+
+      // Setup event listeners
+      function setupEventListeners() {
+        // Filter buttons
+        filterButtons.forEach(btn => {
+          btn.addEventListener('click', () => filterGallery(btn.dataset.filter));
+        });
+        
+        // Gallery items
+        galleryGrid.addEventListener('click', (e) => {
+          const galleryItem = e.target.closest('.gallery-item');
+          if (galleryItem) {
+            const index = parseInt(galleryItem.dataset.index);
+            openLightbox(index);
+          }
+        });
+        
+        // Lightbox controls
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', () => navigateLightbox('prev'));
+        lightboxNext.addEventListener('click', () => navigateLightbox('next'));
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+          if (!lightbox.classList.contains('active')) return;
+          
+          if (e.key === 'Escape') {
+            closeLightbox();
+          } else if (e.key === 'ArrowLeft') {
+            navigateLightbox('prev');
+          } else if (e.key === 'ArrowRight') {
+            navigateLightbox('next');
+          }
+        });
+        
+        // Close lightbox when clicking outside content
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) {
+            closeLightbox();
+          }
+        });
+      }
+
+      // Initialize the gallery
+      initGallery();
+    });
+  </script>
+</body>
+</html>

@@ -35,7 +35,6 @@
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="add_picture.php">Add New Pictures</a></li>
                 <li><a class="nav-link" href="picture.php">All Pcitures</a></li>
-                <li><a class="nav-link" href="add_gallery.php">Add Gallery Category</a></li>
               </ul>
             </li>
 
